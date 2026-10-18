@@ -1,0 +1,802 @@
+/* custom.css - Estilos Avançados & Motor de Responsividade e Legibilidade Fluida
+   Portal de Urgências e Emergências Obstétricas (Parte 4 - FEBRASGO / SUS / USMLE / ACOG)
+   Otimizado para iOS (Safari), Android (Chrome/Firefox), Tablets e Desktops.
+   Deploy: GitHub Pages / Web.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   1. RESET FLUIDO, OVERFLOW-X: HIDDEN E CONTÊINERES COM MAX-WIDTH: 100%
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  min-width: 0; /* Permite que filhos em Flexbox e CSS Grid encolham fluidamente */
+}
+
+html {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-x: clip;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: calc(var(--fluid-base) * var(--font-scale));
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 9.25rem) + 0.75rem); /* Compensação dinâmica da navbar fixa */
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: calc(var(--header-height, 11rem) + 0.75rem);
+  }
+}
+
+.scroll-mt-24,
+.scroll-mt-28 {
+  scroll-margin-top: calc(var(--header-height, 9.25rem) + 0.75rem) !important;
+}
+
+@media (max-width: 1023px) {
+  .scroll-mt-24,
+  .scroll-mt-28 {
+    scroll-margin-top: calc(var(--header-height, 11rem) + 0.75rem) !important;
+  }
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-x: clip;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: var(--header-height, 8.75rem) !important; /* Espaço dinâmico sincronizado com a altura real do cabeçalho */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.06rem);
+  line-height: 1.72;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1023px) {
+  body {
+    padding-top: var(--header-height, 10.5rem) !important;
+  }
+}
+
+/* Prevenção global de estouro de texto com word-wrap e overflow-wrap sem quebrar palavras curtas */
+p, span, h1, h2, h3, h4, h5, h6, li, blockquote, dt, dd, a, label, input, select, textarea, div {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal;
+}
+
+/* Quebra agressiva apenas para URLs, códigos ou identificadores longos */
+code, pre, .break-anywhere {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Evita quebra bizarra letra-a-letra em botões, links de menu e badges */
+button, .btn, nav a, #module-subnav a, [role="button"], .badge-pill {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* Permite que botões de múltipla escolha do Simulado quebrem linhas naturalmente */
+.quiz-opt-btn {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+/* ==========================================================================
+   2. CONTÊINERES 100% RESPONSIVOS COM LARGURAS EM PORCENTAGEM E MAX-WIDTH: 100%
+   ========================================================================== */
+.container,
+main,
+section,
+footer,
+article,
+form,
+.glass-panel,
+.module-card,
+.table-responsive-container,
+.img-fluid-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.max-w-7xl,
+.max-w-6xl,
+.max-w-5xl,
+.max-w-4xl,
+.max-w-3xl,
+.max-w-2xl,
+.max-w-xl,
+.max-w-lg,
+.max-w-md,
+.max-w-sm,
+.max-w-xs {
+  width: 100%;
+  box-sizing: border-box !important;
+}
+
+.max-w-7xl { max-width: min(100%, 80rem) !important; }
+.max-w-6xl { max-width: min(100%, 72rem) !important; }
+.max-w-5xl { max-width: min(100%, 64rem) !important; }
+.max-w-4xl { max-width: min(100%, 56rem) !important; }
+.max-w-3xl { max-width: min(100%, 48rem) !important; }
+.max-w-2xl { max-width: min(100%, 42rem) !important; }
+.max-w-xl  { max-width: min(100%, 36rem) !important; }
+.max-w-lg  { max-width: min(100%, 32rem) !important; }
+.max-w-md  { max-width: min(100%, 28rem) !important; }
+.max-w-sm  { max-width: min(100%, 24rem) !important; }
+.max-w-xs  { max-width: min(100%, 20rem) !important; }
+
+@media (min-width: 640px) {
+  .sm\:max-w-sm { max-width: min(100%, 24rem) !important; }
+  .sm\:max-w-md { max-width: min(100%, 28rem) !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:max-w-md { max-width: min(100%, 28rem) !important; }
+  .lg\:max-w-lg { max-width: min(100%, 32rem) !important; }
+}
+
+/* ==========================================================================
+   3. VARIÁVEIS GLOBAIS, ESCALA DE FONTE AUMENTADA & SAFE AREAS (iOS / ANDROID)
+   ========================================================================== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #881337 100%);
+  --sus-blue: #0284c7;
+  --sus-navy: #0f172a;
+  --emergency-red: #e11d48;
+  --emergency-amber: #d97706;
+  --emergency-emerald: #059669;
+
+  /* Safe Area Insets para notch de iPhone, Dynamic Island e barras de gestos Android */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Fator de escala dinâmico (Reader Mode / Acessibilidade) */
+  --font-scale: 1;
+
+  /* Base tipográfica aumentada: escala de 16px (smartphones) a 18.5px (telas 2K/4K) */
+  --fluid-base: clamp(16px, 1.02rem + 0.35vw, 18.5px);
+}
+
+/* Modos Dinâmicos de Tamanho de Fonte (Reader Mode Clínico) */
+html[data-font-size="normal"] {
+  --font-scale: 1;
+}
+html[data-font-size="large"] {
+  --font-scale: 1.15;
+}
+html[data-font-size="xlarge"] {
+  --font-scale: 1.28;
+}
+
+/* ==========================================================================
+   4. IMAGENS FLUIDAS (LARGURA MÁXIMA 100% E ALTURA PROPORCIONAL)
+   ========================================================================== */
+img, picture, video, canvas, svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.overflow-hidden {
+  max-width: 100% !important;
+}
+
+.img-fluid-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.fluid-img,
+.zoom-cursor,
+.module-card img,
+.glass-panel img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Visualizador de imagem no Lightbox: contido sem estourar altura nem largura */
+#lightbox-modal .lightbox-img,
+#lightbox-image,
+.lightbox-img {
+  max-width: 100% !important;
+  max-height: 75vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   5. MENU DE NAVEGAÇÃO COM POSITION: FIXED, MIN-HEIGHT E FLEXBOX (FLEX-WRAP)
+   ========================================================================== */
+header.glass-nav,
+header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 6.25rem;
+  height: auto !important;
+  z-index: 50 !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-sizing: border-box !important;
+  padding-top: max(0px, env(safe-area-inset-top));
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
+.dark header.glass-nav,
+.dark header,
+html.dark header.glass-nav,
+html.dark header {
+  background: rgba(15, 23, 42, 0.96) !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.9);
+}
+
+/* Barra superior do cabeçalho: Flexbox com flex-wrap e min-height para evitar sobreposição */
+header .header-main-bar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 3.75rem !important;
+  height: auto !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  gap: 0.45rem 0.75rem !important;
+}
+
+/* Cabeçalho com os módulos (#module-subnav): Flexbox com flex-wrap e min-height */
+#module-subnav,
+header .header-modules-nav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  min-height: 2.6rem !important;
+  height: auto !important;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  gap: 0.35rem 0.45rem !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 767px) {
+  #module-subnav,
+  header .header-modules-nav {
+    max-height: 5.5rem;
+    overflow-y: auto;
+  }
+}
+
+/* Cabeçalhos internos das seções de módulos e cartões clínicos */
+.module-header,
+.module-card > div.border-b {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 4.5rem;
+  height: auto;
+  gap: 0.35rem;
+}
+
+/* Ajustes finos de tipografia com clamp() e line-height na barra de navegação */
+header .nav-brand-title {
+  font-size: clamp(0.84rem, 0.76rem + 0.35vw, 1.06rem) !important;
+  line-height: 1.3 !important;
+}
+
+header .nav-pill-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.9rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem) !important;
+  line-height: 1.38 !important;
+  white-space: nowrap !important;
+}
+
+header .subnav-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.85rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.16vw, 0.81rem) !important;
+  line-height: 1.38 !important;
+  white-space: nowrap !important;
+}
+
+header .font-size-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 1.85rem;
+  font-size: clamp(0.7rem, 0.66rem + 0.15vw, 0.78rem) !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   6. TIPOGRAFIA AUMENTADA & RESPONSIVA COM CLAMP() E LINE-HEIGHT AJUSTADO
+   ========================================================================== */
+h1 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.65rem, 1.3rem + 2.3vw, 2.75rem) !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.025em;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h2 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.35rem, 1.12rem + 1.2vw, 2.1rem) !important;
+  line-height: 1.34 !important;
+  letter-spacing: -0.02em;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h3 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem) !important;
+  line-height: 1.4 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.02rem, 0.94rem + 0.38vw, 1.28rem) !important;
+  line-height: 1.45 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+p, li, dd, blockquote {
+  line-height: 1.68;
+}
+
+/* Proteção contra line-heights excessivamente comprimidos em títulos quebrados */
+.leading-none {
+  line-height: 1.24 !important;
+}
+.leading-tight {
+  line-height: 1.3 !important;
+}
+.leading-snug {
+  line-height: 1.4 !important;
+}
+.leading-normal {
+  line-height: 1.58 !important;
+}
+.leading-relaxed {
+  line-height: 1.7 !important;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Escalas utilitárias aumentadas com unidades fluidas clamp() e line-height calibrado */
+.text-\[9px\] {
+  font-size: clamp(0.72rem, 0.68rem + 0.14vw, 0.78rem) !important;
+  line-height: 1.38 !important;
+}
+
+.text-\[10px\] {
+  font-size: clamp(0.76rem, 0.72rem + 0.16vw, 0.84rem) !important;
+  line-height: 1.42 !important;
+}
+
+.text-\[11px\] {
+  font-size: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem) !important;
+  line-height: 1.48 !important;
+}
+
+.text-xs {
+  font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem) !important;
+  line-height: 1.56 !important;
+}
+
+.text-sm {
+  font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.05rem) !important;
+  line-height: 1.62 !important;
+}
+
+.text-base {
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.18rem) !important;
+  line-height: 1.68 !important;
+}
+
+.text-lg {
+  font-size: clamp(1.16rem, 1.06rem + 0.55vw, 1.35rem) !important;
+  line-height: 1.58 !important;
+}
+
+.text-xl {
+  font-size: clamp(1.28rem, 1.16rem + 0.75vw, 1.52rem) !important;
+  line-height: 1.48 !important;
+}
+
+.text-2xl {
+  font-size: clamp(1.42rem, 1.28rem + 0.95vw, 1.78rem) !important;
+  line-height: 1.38 !important;
+}
+
+.text-3xl {
+  font-size: clamp(1.62rem, 1.42rem + 1.2vw, 2.15rem) !important;
+  line-height: 1.32 !important;
+}
+
+.text-4xl {
+  font-size: clamp(1.85rem, 1.58rem + 1.65vw, 2.55rem) !important;
+  line-height: 1.28 !important;
+}
+
+.text-5xl {
+  font-size: clamp(2.15rem, 1.78rem + 2.2vw, 3.15rem) !important;
+  line-height: 1.24 !important;
+}
+
+@media (min-width: 640px) {
+  .sm\:text-xs { font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem) !important; line-height: 1.56 !important; }
+  .sm\:text-sm { font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.05rem) !important; line-height: 1.62 !important; }
+  .sm\:text-base { font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.18rem) !important; line-height: 1.68 !important; }
+  .sm\:text-lg { font-size: clamp(1.16rem, 1.06rem + 0.55vw, 1.35rem) !important; line-height: 1.58 !important; }
+  .sm\:text-xl { font-size: clamp(1.28rem, 1.16rem + 0.75vw, 1.52rem) !important; line-height: 1.48 !important; }
+  .sm\:text-2xl { font-size: clamp(1.42rem, 1.28rem + 0.95vw, 1.78rem) !important; line-height: 1.38 !important; }
+  .sm\:text-3xl { font-size: clamp(1.62rem, 1.42rem + 1.2vw, 2.15rem) !important; line-height: 1.32 !important; }
+  .sm\:text-4xl { font-size: clamp(1.85rem, 1.58rem + 1.65vw, 2.55rem) !important; line-height: 1.28 !important; }
+  .sm\:text-5xl { font-size: clamp(2.15rem, 1.78rem + 2.2vw, 3.15rem) !important; line-height: 1.24 !important; }
+}
+
+@media (min-width: 768px) {
+  .md\:text-sm { font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.05rem) !important; line-height: 1.62 !important; }
+  .md\:text-base { font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.18rem) !important; line-height: 1.68 !important; }
+  .md\:text-lg { font-size: clamp(1.16rem, 1.06rem + 0.55vw, 1.35rem) !important; line-height: 1.58 !important; }
+  .md\:text-xl { font-size: clamp(1.28rem, 1.16rem + 0.75vw, 1.52rem) !important; line-height: 1.48 !important; }
+  .md\:text-2xl { font-size: clamp(1.42rem, 1.28rem + 0.95vw, 1.78rem) !important; line-height: 1.38 !important; }
+  .md\:text-3xl { font-size: clamp(1.62rem, 1.42rem + 1.2vw, 2.15rem) !important; line-height: 1.32 !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-lg { font-size: clamp(1.16rem, 1.06rem + 0.55vw, 1.35rem) !important; line-height: 1.58 !important; }
+  .lg\:text-xl { font-size: clamp(1.28rem, 1.16rem + 0.75vw, 1.52rem) !important; line-height: 1.48 !important; }
+  .lg\:text-5xl { font-size: clamp(2.15rem, 1.78rem + 2.2vw, 3.15rem) !important; line-height: 1.24 !important; }
+}
+
+/* ==========================================================================
+   7. GLASSMORPHISM, PAINÉIS CLÍNICOS & RESPONSIVIDADE TOUCH / MOBILE
+   ========================================================================== */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.dark .glass-panel,
+html.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+html.dark .glass-nav {
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Ajuste de padding e espaçamento em dispositivos móveis */
+@media (max-width: 640px) {
+  .glass-panel {
+    padding: 1rem !important;
+    border-radius: 1rem !important;
+  }
+  main {
+    padding-left: max(0.85rem, var(--sal)) !important;
+    padding-right: max(0.85rem, var(--sar)) !important;
+  }
+}
+
+/* Prevenção de auto-zoom no iOS Safari em inputs e selects */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+    min-height: 44px;
+  }
+}
+
+/* ==========================================================================
+   8. TABELAS CLÍNICAS RESPONSIVAS COM ROLAGEM INTERNA BLINDADA
+   ========================================================================== */
+.table-responsive-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+  min-width: 0 !important; /* Prevent flexbox/grid overflow */
+}
+
+.table-responsive-container table {
+  width: 100%;
+  min-width: 0 !important; /* Allow table to shrink on small screens */
+  border-collapse: collapse;
+}
+
+.table-responsive-container th,
+.table-responsive-container td {
+  vertical-align: top;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  min-width: 0 !important; /* Remove fixed min-width constraints */
+  hyphens: none;
+}
+
+/* Mobile-first table adjustments */
+@media (max-width: 640px) {
+  .table-responsive-container th,
+  .table-responsive-container td {
+    min-width: 4rem !important; /* Reduced min-width for mobile */
+    padding: 0.5rem !important; /* Smaller padding for mobile */
+  }
+  
+  .table-responsive-container th:first-child,
+  .table-responsive-container td:first-child {
+    min-width: 4rem !important;
+  }
+  
+  .table-responsive-container th:not(:first-child),
+  .table-responsive-container td:not(:first-child) {
+    min-width: 5rem !important;
+  }
+}
+
+/* Ensure table text doesn't overflow */
+.table-responsive-container td,
+.table-responsive-container th {
+  break-word: break-word !important;
+}
+
+/* ==========================================================================
+   9. SCROLLBAR CUSTOMIZADA & NO-SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+
+html.dark ::-webkit-scrollbar-track,
+.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.8);
+  border-radius: 9999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 1);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   10. 3D FLASHCARD FLIP (ESTUDO ATIVO INTERATIVO)
+   ========================================================================== */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+#flashcard {
+  min-height: 21rem;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (min-width: 640px) {
+  #flashcard {
+    min-height: 23rem;
+  }
+}
+
+.backface-hidden {
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow-y: auto;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.card-flipped {
+  transform: rotateY(180deg);
+}
+
+#flashcard:not(.card-flipped) > .rotate-y-180 {
+  pointer-events: none;
+}
+
+#flashcard.card-flipped > :not(.rotate-y-180) {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   11. LIGHTBOX MODAL & ZOOM
+   ========================================================================== */
+.zoom-cursor {
+  cursor: zoom-in;
+}
+
+.lightbox-img {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center center;
+}
+
+/* ==========================================================================
+   12. BOTÃO DE TEMA E ANIMAÇÕES
+   ========================================================================== */
+html.dark .icon-moon {
+  display: none !important;
+}
+html.dark .icon-sun {
+  display: inline-block !important;
+}
+html:not(.dark) .icon-sun {
+  display: none !important;
+}
+html:not(.dark) .icon-moon {
+  display: inline-block !important;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.88; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes flash-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+  50% { box-shadow: 0 0 16px 4px rgba(225, 29, 72, 0.4); }
+}
+
+.animate-flash-red {
+  animation: flash-red 2s infinite;
+}
+
+/* Range Sliders */
+input[type=range] {
+  accent-color: #e11d48;
+}
+
+/* ==========================================================================
+   13. BOTÕES FLUTUANTES (FAB VOLTAR AO TOPO & HUB CENTRAL) E IMPRESSÃO
+   ========================================================================== */
+#fab-back-to-top {
+  position: fixed;
+  bottom: calc(1.25rem + var(--sab));
+  right: calc(1.25rem + var(--sar));
+  z-index: 40;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fab-back-to-top.fab-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1.2rem) scale(0.9);
+}
+
+#fab-back-to-top.fab-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.fab-hub-master {
+  bottom: calc(1.25rem + var(--sab)) !important;
+  left: calc(1rem + var(--sal)) !important;
+  max-width: calc(100vw - 5.5rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .fab-hub-master {
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+@media print {
+  header, #fab-back-to-top, .fab-hub-master, #reading-progress-bar {
+    display: none !important;
+  }
+  body {
+    padding-top: 0 !important;
+  }
+}
+
