@@ -1,0 +1,64 @@
+<!-- ==================== MODALS & LIGHTBOXES ==================== -->
+
+  <!-- 1. IMAGE LIGHTBOX MODAL -->
+  <div id="image-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 backdrop-blur-md p-2 sm:p-4 transition-all">
+    <div class="relative max-w-5xl w-full bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[96vh]">
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:px-6 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
+        <div class="min-w-0 pr-2">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-teal-400 block truncate">Visualizador Clínico em Alta Resolução</span>
+          <h4 id="lightbox-title" class="text-sm sm:text-lg font-black text-white truncate">Título da Imagem</h4>
+        </div>
+        <button onclick="closeLightbox()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-all shrink-0 cursor-pointer" aria-label="Fechar visualizador">
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Image Container) -->
+      <div class="overflow-auto p-2 sm:p-4 flex-1 flex items-center justify-center bg-black/60">
+        <img id="lightbox-img" src="" alt="Imagem Médica" class="max-w-full max-h-[52vh] sm:max-h-[70vh] object-contain rounded-xl shadow-lg">
+      </div>
+
+      <!-- Modal Footer (Clinical Caption) -->
+      <div class="p-3.5 sm:px-6 border-t border-slate-800 bg-slate-900/90 text-xs text-slate-300 max-h-[28vh] overflow-y-auto shrink-0">
+        <p id="lightbox-caption" class="leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. QUICK SEARCH MODAL (Ctrl+K) -->
+  <div id="search-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4">
+    <div class="relative max-w-xl w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Search Input Header -->
+      <div class="p-3.5 sm:p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+        <i class="fa-solid fa-magnifying-glass text-teal-500 text-base"></i>
+        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Buscar por tema (ex: HELLP, Doppler, Zuspan, GBS, Naegele)..." class="w-full bg-transparent text-slate-900 dark:text-white font-medium text-base sm:text-sm outline-none" style="font-size: 16px;">
+        <button onclick="closeSearchModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
+          <kbd class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800">ESC</kbd>
+        </button>
+      </div>
+
+      <!-- Search Results Box -->
+      <div id="search-results" class="p-3 max-h-80 overflow-y-auto space-y-1">
+        <p class="text-xs text-slate-400 text-center py-6">Digite um termo para pesquisar instantaneamente no guia...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING ACTION BUTTON (Voltar ao Topo & Mobile Quick Navigation) -->
+  <button id="back-to-top-btn" onclick="scrollToTop()" title="Voltar ao início da página" class="fab-back-to-top fab-hidden w-11 h-11 rounded-2xl bg-teal-600 hover:bg-teal-700 active:scale-95 text-white shadow-xl shadow-teal-600/30 flex items-center justify-center transition-all cursor-pointer border border-teal-400/30" aria-label="Voltar ao Topo">
+    <i class="fa-solid fa-arrow-up text-sm"></i>
+  </button>
+
+    <!-- Main JavaScript App Logic -->
+  <script src="assets/js/app.js"></script>
+
+  <!-- Botão Flutuante de Retorno ao Hub Master (8 Portais) -->
+  <a href="../index.html" title="Voltar ao Dashboard Central (8 Portais)" 
+     style="position:fixed;bottom:1.25rem;left:1.25rem;z-index:45;display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 0.95rem;border-radius:9999px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;text-decoration:none;box-shadow:0 10px 25px -5px rgba(79,70,229,0.45);border:1px solid rgba(255,255,255,0.25);transition:transform 0.2s ease,box-shadow 0.2s ease;"
+     onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+    <span>🏠 Hub Central (8 Portais)</span>
+  </a>
+
+</body>
+</html>
