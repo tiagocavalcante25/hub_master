@@ -1,0 +1,158 @@
+<!-- ==================== MÓDULO 13: PARTOGRAMA & SIMULADOR ==================== -->
+    <section id="modulo-13" class="glass-panel p-6 sm:p-8 rounded-3xl glow-card scroll-mt-28">
+      <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-3 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Módulo 13</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Partograma da OMS & Diagnóstico de Distocias</h2>
+        </div>
+        <button data-speech-btn="modulo-13-content" onclick="speakSection('modulo-13-content')" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 shrink-0">
+          <i class="fa-solid fa-volume-high text-teal-600 dark:text-teal-400"></i> Ouvir Resumo
+        </button>
+      </div>
+
+      <div id="modulo-13-content" class="space-y-6">
+        <!-- Didactic Analogy Box -->
+        <div class="didactic-content p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
+          <div class="flex items-center gap-2 text-amber-800 dark:text-amber-300 text-xs font-bold uppercase tracking-wider mb-1">
+            <span>🎈</span> Didática para Criança de 5 Anos
+          </div>
+          <p class="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+            O partograma é como o <strong>mapa com velocímetro do parto</strong>. Ele tem duas linhas guias desenhadas na folha: a <strong>linha amarela (Alerta)</strong> e a <strong>linha vermelha (Ação)</strong>. Se o barquinho do bebê navegar devagar demais e bater na linha vermelha, o médico sabe que o parto "emperrou" e precisa intervir para ajudar o bebê a nascer logo e seguro!
+          </p>
+        </div>
+
+        <!-- Medical Image 2: Partograph -->
+        <div>
+          <div class="relative group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-900 img-fluid-container" onclick="openLightbox('assets/img/partograma_oms_curvas.jpg', 'Partograma da OMS: Registro Gráfico do Trabalho de Parto', 'Gráfico bidimensional relacionando o tempo de trabalho de parto no eixo X e a dilatação cervical (0-10 cm) no eixo Y. Destaca a Linha de Alerta (início em 6 cm com velocidade esperada de 1 cm/h), Linha de Ação (4 horas à direita), e registros simultâneos de dinâmica uterina, BCF e descida fetal.')">
+            <img src="assets/img/partograma_oms_curvas.jpg" alt="Partograma da OMS com Curvas e Linhas de Alerta e Ação" class="fluid-img w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-300 max-w-full" loading="lazy" style="aspect-ratio: 16/9;">
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-4 text-xs text-slate-300">
+              <strong>Clique para ampliar em tela cheia:</strong> Estrutura do Partograma da OMS com curvas de dilatação, descida fetal e linhas de alerta/ação.
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE PARTOGRAPH SIMULATOR -->
+        <div id="simuladores-section" class="scroll-mt-28"></div>
+        <div id="simulador-partograma" class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 scroll-mt-28">
+          <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Simulador Clínico Interativo</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white">Curvas de Partograma em Tempo Real</h3>
+            </div>
+            <!-- Scenario Selector Buttons -->
+            <div class="flex flex-wrap gap-2">
+              <button id="btn-scenario-normal" onclick="selectPartographScenario('normal')" class="scenario-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-teal-600 text-white shadow-md transition-all">
+                Parto Normal
+              </button>
+              <button id="btn-scenario-prolonged" onclick="selectPartographScenario('prolonged')" class="scenario-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all border border-slate-200 dark:border-slate-700">
+                Fase Ativa Prolongada
+              </button>
+              <button id="btn-scenario-arrest_dilation" onclick="selectPartographScenario('arrest_dilation')" class="scenario-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all border border-slate-200 dark:border-slate-700">
+                Parada de Dilatação
+              </button>
+              <button id="btn-scenario-arrest_descent" onclick="selectPartographScenario('arrest_descent')" class="scenario-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all border border-slate-200 dark:border-slate-700">
+                Parada de Descida
+              </button>
+            </div>
+          </div>
+
+          <!-- Canvas Container -->
+          <div class="relative w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2">
+            <canvas id="partograph-canvas" width="900" height="420" class="w-full h-auto block"></canvas>
+          </div>
+
+          <!-- Dynamic Diagnostic Output -->
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs uppercase font-bold text-slate-400">Diagnóstico Clínico:</span>
+              <span id="parto-diag-title" class="text-base font-black text-emerald-600 dark:text-emerald-400">Evolução Eutócica Fisiológica</span>
+            </div>
+            <p id="parto-diag-desc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Início da fase ativa em 6 cm. Progressão rápida e constante a ≥ 1 cm/h, mantendo-se à esquerda da Linha de Alerta.
+            </p>
+            <div class="p-3 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800 text-xs text-teal-800 dark:text-teal-200">
+              <strong>Conduta Recomendada:</strong> <span id="parto-diag-action">Manter assistência humanizada de rotina, suporte contínuo e ausculta intermitente da FCF.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- USMLE Criteria for Arrest of Labor -->
+        <div class="p-5 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 space-y-3">
+          <h4 class="text-sm font-bold text-rose-800 dark:text-rose-300 flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-rose-500"></i> Critérios Rígidos de Parada de Dilatação — 1º Período (ACOG / USMLE Gold Standard)
+          </h4>
+          <p class="text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+            Para fechar diagnóstico de <strong>falha de progressão da fase ativa (indicação de cesárea)</strong>, é obrigatório preencher <strong>TODOS</strong> os seguintes requisitos prévios:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900 font-medium">
+              1. Dilatação cervical mínima de <strong>≥ 6 cm</strong> (início verdadeiro da fase ativa).
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900 font-medium">
+              2. <strong>Bolsa rota</strong> (membranas amnióticas rotas espontânea ou artificialmente).
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900 font-medium">
+              3. Sem progressão por <strong>≥ 4 horas com contrações adequadas (≥ 200 MVU)</strong> OU <strong>≥ 6 horas com contrações inadequadas com ocitocina</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- CRITÉRIOS DE ARRESTO DE DESCIDA (2º PERÍODO) - ACOG 2024 / FEBRASGO -->
+        <div class="p-5 rounded-2xl bg-cyan-50 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-900/50 space-y-3">
+          <h4 class="text-sm font-bold text-cyan-800 dark:text-cyan-300 flex items-center gap-2">
+            <i class="fa-solid fa-arrow-down-to-bracket text-cyan-500"></i> Arresto de Descida no 2º Período (Período Expulsivo Prolongado — ACOG 2024)
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-cyan-200 dark:border-cyan-900">
+              <strong class="text-cyan-700 dark:text-cyan-300 block mb-1">Nulípara</strong>
+              <span class="text-slate-700 dark:text-slate-300">&gt; <strong>3 horas</strong> de esforço expulsivo ativo sem analgesia peridural (ou &gt; 4 horas com analgesia).</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-cyan-200 dark:border-cyan-900">
+              <strong class="text-cyan-700 dark:text-cyan-300 block mb-1">Multípara</strong>
+              <span class="text-slate-700 dark:text-slate-300">&gt; <strong>2 horas</strong> de esforço expulsivo ativo sem analgesia peridural (ou &gt; 3 horas com analgesia).</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-cyan-200 dark:border-cyan-900 col-span-1 sm:col-span-2">
+              <strong class="text-cyan-700 dark:text-cyan-300 block mb-1">Requisitos para Diagnóstico & Conduta:</strong>
+              <span class="text-slate-700 dark:text-slate-300">
+                • Requisitos: Dilatação total (10 cm), membranas rotas, dinâmica adequada (≥ 200 MVU ou ocitocina) e ausência de progressão de descida da apresentação.<br>
+                • Conduta: Se apresentação insinuada (plano ≥ +2 de De Lee), variedade de posição conhecida e pelve compatível ➔ <strong>Parto operatório com fórceps de alívio ou vácuo-extrator</strong>. Caso contrário ou suspeita de DCP ➔ <strong>Cesariana intraparto</strong>.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONDUTA NO MECÔNIO & PROFILAXIA DE GBS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Mecônio (NRP 2024 / SBP) -->
+          <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
+            <h5 class="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-baby text-amber-500"></i> Líquido Amniótico Meconial (NRP 2020/2024 / SBP)
+            </h5>
+            <div class="space-y-1.5 text-slate-700 dark:text-slate-300 text-[11px]">
+              <div class="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                <strong class="text-emerald-700 dark:text-emerald-300 block">RN VIGOROSO (Respira, Tônus Normal, FC &gt; 100):</strong>
+                <strong>NÃO ASPIRAR VIAS AÉREAS DE ROTINA AO NASCER!</strong> A aspiração orofaringeal no períneo foi formalmente <strong>ABANDONADA</strong> (não previne SAM e pode causar bradicardia vagal reflexa). Clampeamento tardio (1-3 min), secagem suave e contato pele a pele.
+              </div>
+              <div class="p-2 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
+                <strong class="text-rose-700 dark:text-rose-300 block">RN NÃO VIGOROSO (Deprimido, Hipotônico, FC &lt; 100):</strong>
+                Levar imediatamente à mesa de reanimação. Realizar <strong>laringoscopia direta imediata com aspiração traqueal sob visualização</strong> (&lt; 5 seg) antes de secar ou estimular. Se persistir bradicardia/apneia ➔ iniciar Ventilação com Pressão Positiva (VPP) com ar ambiente (O2 21%).
+              </div>
+            </div>
+          </div>
+
+          <!-- Profilaxia de GBS -->
+          <div class="p-4 rounded-2xl bg-teal-50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900/50 space-y-2">
+            <h5 class="font-bold text-teal-800 dark:text-teal-300 flex items-center gap-2">
+              <i class="fa-solid fa-shield-virus text-teal-500"></i> Profilaxia Intraparto para GBS (FEBRASGO / CDC)
+            </h5>
+            <div class="space-y-1 text-slate-700 dark:text-slate-300 text-[11px]">
+              <p>• <strong>Indicações:</strong> Cultura retovaginal positiva com 35-37 semanas, bacteriúria por GBS na gestação atual ou histórico de filho anterior com sepse por GBS.</p>
+              <p>• <strong>Esquema Padrão-Ouro:</strong> <strong>Penicilina G Cristalina:</strong> 5 milhões de UI EV (dose de ataque) + 2,5 a 3 milhões de UI EV a cada 4 horas até o nascimento (alternativa: Ampicilina 2g EV ataque + 1g EV 4/4h).</p>
+              <div class="p-2 rounded-lg bg-teal-100/70 dark:bg-teal-900/40 border border-teal-300 dark:border-teal-700 text-teal-900 dark:text-teal-200 font-bold mt-1">
+                ⭐ <strong>Requisito de Eficácia:</strong> A profilaxia só é considerada adequada e protetora se administrada <strong>pelo menos 4 horas antes do desprendimento fetal</strong>!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

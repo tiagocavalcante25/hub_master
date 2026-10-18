@@ -1,0 +1,212 @@
+<!-- ==================== MÓDULO 16: DISTÓCIAS & SIMULADOR HELPERR ==================== -->
+    <section id="distocia-ombros" class="glass-panel p-6 sm:p-8 rounded-3xl glow-card scroll-mt-28">
+      <div id="modulo-16" class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-3 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6 scroll-mt-28">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Módulo 16 · Emergência Obstétrica</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Distócia de Ombros & O Algoritmo HELPERR</h2>
+        </div>
+        <button data-speech-btn="distocia-content" onclick="speakSection('distocia-content')" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 shrink-0">
+          <i class="fa-solid fa-volume-high text-teal-600 dark:text-teal-400"></i> Ouvir Resumo
+        </button>
+      </div>
+
+      <div id="distocia-content" class="space-y-6">
+        <!-- Didactic Analogy Box -->
+        <div class="didactic-content p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
+          <div class="flex items-center gap-2 text-amber-800 dark:text-amber-300 text-xs font-bold uppercase tracking-wider mb-1">
+            <span>🎈</span> Didática para Criança de 5 Anos
+          </div>
+          <p class="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+            A distócia de ombros é como tentar <strong>tirar uma rolha gordinha de dentro de uma garrafa</strong>: a pontinha saiu (a cabeça do bebê), mas os bracinhos ficaram travados atrás do osso duro da mamãe (sínfise púbica). O médico não pode puxar a cabeça com força para não machucar o pescocinho! Em vez disso, dobra as pernas da mamãe bem para cima (McRoberts) e aperta em cima do osso para destravar o ombrinho!
+          </p>
+        </div>
+
+        <!-- Medical Image 3: Shoulder Dystocia -->
+        <div>
+          <div class="relative group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-900 img-fluid-container" onclick="openLightbox('assets/img/distocia_ombros_mcroberts.jpg', 'Emergência Obstétrica: Distócia de Ombros e Manobras de McRoberts e Rubin', 'Ilustração médica em corte sagital mostrando o impacto do ombro anterior fetal atrás da sínfise púbica materna (Sinal da Tartaruga) e a execução da manobra de McRoberts com hiperflexão das coxas maternas associada à pressão suprapúbica (Rubin I).')">
+            <img src="assets/img/distocia_ombros_mcroberts.jpg" alt="Distócia de Ombros e Manobra de McRoberts em Alta Resolução" class="fluid-img w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-300 max-w-full" loading="lazy" style="aspect-ratio: 16/9;">
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-4 text-xs text-slate-300">
+              <strong>Clique para ampliar em tela cheia:</strong> Anatomia da distócia de ombros, sinal da tartaruga e desimpactação com McRoberts + Rubin I.
+            </div>
+          </div>
+        </div>
+
+        <!-- HELPERR INTERACTIVE TRAINER -->
+        <div id="helperr-trainer" class="p-6 rounded-3xl bg-slate-900 text-white shadow-xl space-y-6 scroll-mt-28">
+          <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Treinador de Emergência com Cronômetro</span>
+              <h3 class="text-xl font-black text-white">Algoritmo Mnemônico HELPERR</h3>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="text-2xl font-mono font-black text-rose-400 bg-slate-950 px-4 py-1.5 rounded-xl border border-slate-800 shadow-inner" id="helperr-clock">00:00</div>
+              <button id="helperr-start-btn" onclick="toggleHelperrTimer()" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md">
+                <i class="fa-solid fa-play"></i> Iniciar Cronômetro
+              </button>
+            </div>
+          </div>
+
+          <div id="helperr-time-alert" class="p-3 rounded-xl bg-teal-950/50 text-teal-300 border border-teal-800 text-xs font-semibold">
+            Tempo decorrido: O objetivo é a desimpactação segura em até 2 a 3 minutos para evitar encefalopatia anóxica e acidose fetal grave (pH &lt; 7,00).
+          </div>
+
+          <!-- HELPERR ATUALIZADO 2024: ABORDAGEM EM CAMADAS -->
+          <div class="space-y-4">
+            <!-- CAMADA 0: Preparação -->
+            <div class="border-b border-slate-800 pb-2">
+              <span class="text-[10px] font-black uppercase tracking-wider text-rose-400">Camada 0 · Diagnóstico & Preparação Imediata (0 - 30s)</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-4 rounded-2xl bg-slate-800/80 border border-rose-500/50">
+                <div class="flex items-center gap-2 font-black text-rose-400 text-sm mb-1">
+                  <span>H</span> Help (Ajuda Imediata) + Tempo Zero
+                </div>
+                <p class="text-slate-300">Gritar código de distócia! Convocar obstetra, neonatologista, anestesista e enfermagem. <strong>Disparar cronômetro imediatamente</strong> (meta: parto &lt; 3 min).</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-800/80 border border-amber-500/50">
+                <div class="flex items-center gap-2 font-black text-amber-400 text-sm mb-1">
+                  <span>E</span> Evaluate for Episiotomy
+                </div>
+                <p class="text-slate-300">Avaliar episiotomia ampla médio-lateral para <strong>facilitar acesso das mãos nas manobras internas</strong>. <em>Atenção: episiotomia não desimpacta o osso púbico!</em></p>
+              </div>
+            </div>
+
+            <!-- CAMADA 1: 1ª Linha Simultânea -->
+            <div class="border-b border-slate-800 pb-2 pt-2">
+              <span class="text-[10px] font-black uppercase tracking-wider text-teal-400">Camada 1 · 1ª Linha Obrigatória (30 - 60s) — Manobras Simultâneas (50-60% de Sucesso)</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-teal-500 shadow-lg shadow-teal-500/10">
+                <div class="flex items-center gap-2 font-black text-teal-400 text-sm mb-1">
+                  <span>L</span> Legs (Manobra de McRoberts)
+                </div>
+                <p class="text-slate-300 font-medium"><strong>Simultânea à pressão suprapúbica:</strong> Hiperflexão e abdução forçada das coxas maternas contra o abdome. Retifica a curvatura sacral e alarga a pelve anterior.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-teal-500 shadow-lg shadow-teal-500/10">
+                <div class="flex items-center gap-2 font-black text-teal-400 text-sm mb-1">
+                  <span>P</span> Pressure (Pressão Suprapúbica / Rubin I)
+                </div>
+                <p class="text-slate-300 font-medium"><strong>Manobra de Rubin I:</strong> Pressão na região suprapúbica a 45° oblíqua no dorso do ombro anterior para aduzi-lo sob a sínfise. <strong>NUNCA realizar pressão no fundo uterino!</strong></p>
+              </div>
+            </div>
+
+            <!-- CAMADA 2: 2ª Linha (Conforme Acesso Anatômico) -->
+            <div class="border-b border-slate-800 pb-2 pt-2">
+              <span class="text-[10px] font-black uppercase tracking-wider text-cyan-400">Camada 2 · 2ª Linha (60 - 120s) — Escolha Orientada pelo Acesso Anatômico</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-4 rounded-2xl bg-slate-800/80 border border-indigo-500/60">
+                <div class="flex items-center gap-2 font-black text-indigo-400 text-sm mb-1">
+                  <span>R</span> Remove Posterior Arm (Manobra de Jacquemier)
+                </div>
+                <p class="text-slate-300"><strong>1ª Escolha de 2ª linha se ombro posterior acessível</strong> (DGGG 2024 / FEBRASGO): Introduzir a mão, flexionar o cotovelo e capturar a mão fetal, tracionando o braço sobre a face anterior do tórax para fora da vagina. Reduz o diâmetro biacromial imediatamente.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-800/80 border border-cyan-500/60">
+                <div class="flex items-center gap-2 font-black text-cyan-400 text-sm mb-1">
+                  <span>E</span> Enter (Manobras Internas Rotacionais)
+                </div>
+                <p class="text-slate-300"><strong>Se ombro posterior NÃO acessível:</strong><br>
+                • <strong>Rubin II:</strong> Pressão com 2 dedos na face posterior do ombro anterior para aduzi-lo.<br>
+                • <strong>Woods Corkscrew (Saca-rolhas):</strong> Rotação do ombro posterior em 180° com pressão na face anterior.<br>
+                • <strong>Woods Reverso:</strong> Rotação em sentido anti-horário se houver resistência.</p>
+              </div>
+            </div>
+
+            <!-- CAMADA 3 & 4: 3ª Linha e Manobras Heroicas -->
+            <div class="border-b border-slate-800 pb-2 pt-2">
+              <span class="text-[10px] font-black uppercase tracking-wider text-purple-400">Camada 3 & 4 · 3ª Linha (120 - 180s) & Manobras Heroicas de Resgate (&gt; 3 min)</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-4 rounded-2xl bg-slate-800/80 border border-purple-500/50">
+                <div class="flex items-center gap-2 font-black text-purple-400 text-sm mb-1">
+                  <span>R</span> Roll (Manobra de Gaskin — Quatro Apoios)
+                </div>
+                <p class="text-slate-300">Virar a parturiente em posição genupeitoral / quatro apoios. A força gravitacional e a ampliação da curvatura conjugada sacral favorecem o desprendimento do ombro posterior.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-rose-950/60 border border-rose-500 text-rose-200">
+                <div class="flex items-center gap-2 font-black text-rose-300 text-sm mb-1">
+                  <i class="fa-solid fa-triangle-exclamation text-rose-400"></i> Manobras Heroicas (&gt; 3 a 5 min)
+                </div>
+                <p class="text-rose-100 text-[11px] leading-relaxed">
+                  • <strong>Manobra de Zavanelli:</strong> Flexão e reintrodução da cabeça fetal no canal de parto seguida de cesariana de emergência imediata.<br>
+                  • <strong>Fratura Deliberada da Clavícula:</strong> Tração anterior da clavícula contra o púbis para colabar o diâmetro biacromial.<br>
+                  • <strong>Resgate Abdominal / Histerotomia:</strong> Desimpactação manual transabdominal associada a parto vaginal.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forbidden Maneuvers & Medicolegal Documentation -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-rose-950/40 border border-rose-800 text-rose-200">
+              <h5 class="font-bold text-rose-300 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-ban text-rose-500"></i> Manobras Proibidas (Never Events)
+              </h5>
+              <ul class="space-y-1.5 text-slate-300 text-[11px]">
+                <li>• <strong>Manobra de Kristeller (Pressão no Fundo Uterino):</strong> FORMALMENTE PROIBIDA! Aumenta a impactação óssea contra a sínfise, causa rotura uterina grave e descolamento prematuro de placenta.</li>
+                <li>• <strong>Tração axial/lateral vigorosa no pescoço ou torção cervical:</strong> Causa estiramento do plexo braquial com paralisia irreversível de <strong>Erb-Duchenne (C5-C6)</strong> ou Klumpke (C8-T1).</li>
+                <li>• <strong>Rotação forçada da cabeça:</strong> Risco de fratura de vértebras cervicais e lesão medular alta (tetraplegia).</li>
+                <li>• <strong>Repetição de manobra que falhou por &gt; 2 vezes:</strong> Não perca tempo! Passe imediatamente para a próxima camada.</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 text-slate-300">
+              <h5 class="font-bold text-teal-400 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-file-signature text-teal-400"></i> Registro Obrigatório no Prontuário (Medicolegal)
+              </h5>
+              <ul class="space-y-1.5 text-slate-300 text-[11px]">
+                <li>• <strong>Cronologia Exata:</strong> Horário exato do desprendimento cefálico e momento do nascimento completo (tempo total de distócia).</li>
+                <li>• <strong>Sequenciamento de Manobras:</strong> Registrar detalhadamente cada manobra executada em ordem cronológica e a resposta obtida.</li>
+                <li>• <strong>Força Empregada:</strong> Descrever que foi aplicada tração cefálica suave/moderada, sem pressão fúndica.</li>
+                <li>• <strong>Avaliação Neonatal Imediata:</strong> Boletim de Apgar (1', 5' e 10'), gasometria arterial de cordão (pH, BE) e exame dos membros superiores (Moro simétrico, preensão palmar, movimentação espontânea).</li>
+                <li>• <strong>Debriefing & Comunicação:</strong> Registro de esclarecimento fornecido à puérpera e acompanhante pela equipe obstétrica e pediátrica.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ==================== PARTO OPERATÓRIO & INDICAÇÕES CIRÚRGICAS ==================== -->
+          <div id="parto-operatorio" class="p-5 rounded-2xl bg-slate-800/60 border border-slate-700 space-y-4 text-xs">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+              <span class="text-xs font-black uppercase tracking-wider text-teal-400 flex items-center gap-2">
+                <i class="fa-solid fa-stethoscope"></i> Parto Operatório Vaginal & Indicações Absolutas de Cesariana
+              </span>
+              <span class="px-2 py-0.5 rounded bg-teal-900/60 text-teal-300 font-bold text-[10px]">FEBRASGO / ACOG 2024</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Indicações de Cesariana (com Vasa Prévia em destaque) -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/40 space-y-2">
+                <h6 class="font-bold text-rose-300 flex items-center gap-2 text-xs">
+                  <i class="fa-solid fa-bed-pulse text-rose-400"></i> Indicações Formais de Cesariana Eletiva / Urgência:
+                </h6>
+                <ul class="space-y-1.5 text-slate-300 text-[11px]">
+                  <li class="p-2 rounded-lg bg-rose-950/60 border border-rose-800 text-rose-200 font-bold">
+                    ⚠️ <strong>VASA PRÉVIA:</strong> Indicação ABSOLUTA de <strong>cesariana eletiva programada entre 34 e 36 semanas</strong>. Se as membranas romperem, os vasos fetais desprotegidos laceram, levando à exsanguinação fetal e óbito em minutos!
+                  </li>
+                  <li>• <strong>Placenta Prévia Centro-Total ou Centro-Parcial:</strong> Risco hemorrágico materno catastrófico.</li>
+                  <li>• <strong>Descolamento Prematuro de Placenta (DPP) com feto vivo:</strong> Cesariana de urgência imediata.</li>
+                  <li>• <strong>Prolapso de Cordão Umbilical:</strong> Manter rechaço manual da apresentação e cesariana estourando o tempo.</li>
+                  <li>• <strong>Apresentação Córmica / Transversa e Fronte Defletida:</strong> Impossibilidade mecânica de parto vaginal.</li>
+                  <li>• <strong>Herpes Genital Ativo com Lesões no Canal de Parto:</strong> Prevenção de infecção neonatal grave.</li>
+                </ul>
+              </div>
+
+              <!-- Pré-Requisitos do Fórceps e Vácuo -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-teal-500/40 space-y-2">
+                <h6 class="font-bold text-teal-300 flex items-center gap-2 text-xs">
+                  <i class="fa-solid fa-hand-holding-medical text-teal-400"></i> Condições Obrigatórias para Parto Operatório (Fórceps / Vácuo):
+                </h6>
+                <ul class="space-y-1 text-slate-300 text-[11px]">
+                  <li>• <strong>Dilatação Cervical Total (10 cm):</strong> Nunca aplicar fórceps com colo incompleto.</li>
+                  <li>• <strong>Bolsa Rota:</strong> Membranas amnióticas rotas antes da apreensão.</li>
+                  <li>• <strong>Apresentação Cefálica Fletida e Insinuada:</strong> Pelo menos plano +2 de De Lee (fórceps médio/baixo/saída).</li>
+                  <li>• <strong>Variedade de Posição Rigorosamente Conhecida:</strong> Essencial para posicionamento das colheres (ex.: Simpson para variedades anteriores; Kielland para rotação se operador experiente).</li>
+                  <li>• <strong>Desproporção Cefalopélvica Afastada:</strong> Bacia compatível com volume cefálico.</li>
+                  <li>• <strong>Bexiga Vazia & Analgesia Adequada:</strong> Sondagem vesical de alívio prévia obrigatória.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

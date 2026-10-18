@@ -1,0 +1,212 @@
+<!-- ==================== MÓDULO 19: ALEITAMENTO MATERNO ==================== -->
+    <section id="modulo-19" class="glass-panel p-6 sm:p-8 rounded-3xl glow-card scroll-mt-28">
+      <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-4 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Módulo 19 · Aleitamento Materno</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Aleitamento Materno: Neuroendocrinologia, Composição & Contraindicações</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fisiologia da lactação, composição biomolecular do colostro vs leite maduro e inibição farmacológica.</p>
+        </div>
+        <button data-speech-btn="amamentacao-content" onclick="speakSection('amamentacao-content')" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 shrink-0">
+          <i class="fa-solid fa-volume-high text-teal-600 dark:text-teal-400"></i> Ouvir Resumo
+        </button>
+      </div>
+
+      <div id="amamentacao-content" class="space-y-8">
+        <!-- Didactic Analogy Box -->
+        <div class="didactic-content p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
+          <div class="flex items-center gap-2 text-amber-800 dark:text-amber-300 text-xs font-bold uppercase tracking-wider mb-1">
+            <span>🎈</span> Didática para Criança de 5 Anos
+          </div>
+          <p class="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+            Na fábrica do leite da mamãe trabalham dois ajudantes mágicos: a <strong>Prolactina</strong> é a cozinheira que fabrica o leite dentro das panelinhas (alvéolos). A <strong>Ocitocina</strong> é o garçom que aperta as panelinhas para espirrar o leite na boquinha do bebê! O primeiro leite é o <strong>Colostro</strong>, uma gotinha dourada cheia de escudos protetores (anticorpos). Depois de 3 dias, chega o leite maduro, docinho de lactose e perfeito para o bebê crescer forte!
+          </p>
+        </div>
+
+        <!-- Medical Image 6: Breastfeeding Latch & Hormones -->
+        <div>
+          <div class="relative group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-900 img-fluid-container" onclick="openLightbox('assets/img/amamentacao_neuroendocrinologia_pega.jpg', 'Anatomia Materna, Neuroendocrinologia da Lactação e Técnica da Pega Correta', 'Painel duplo em alta resolução: à esquerda, o eixo neuroendócrino com a prolactina estimulando a síntese de leite nos alvéolos e a ocitocina contraindo as células mioepiteliais na ejeção; à direita, a técnica da pega correta com ângulo labial > 120°, lábio inferior evertido em peixinho, queixo encostado na mama e nariz livre.')">
+            <img src="assets/img/amamentacao_neuroendocrinologia_pega.jpg" alt="Neuroendocrinologia da Lactação e Pega Correta em Alta Resolução" class="fluid-img w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-300 max-w-full" loading="lazy" style="aspect-ratio: 16/9;">
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-4 text-xs text-slate-300">
+              <strong>Clique para ampliar em tela cheia:</strong> Fisiologia hormonal (Prolactina vs Ocitocina) e os critérios anatômicos da pega correta.
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== COMPOSIÇÃO: COLOSTRO VS LEITE MADURO (Slide 16) ==================== -->
+        <div class="space-y-4">
+          <h3 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <i class="fa-solid fa-flask-vial text-teal-500"></i> Composição Biomolecular: Colostro vs Leite Maduro
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- Colostro -->
+            <div class="p-5 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full text-xs font-black bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-100 flex items-center gap-1.5">
+                  <span>🍐</span> Colostro (1º ao 3º dia)
+                </span>
+                <span class="text-amber-800 dark:text-amber-300 font-bold">Lactogênese II Inicial</span>
+              </div>
+              <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                Líquido amarelado e espesso já presente ao parto. Formulado para a imunidade precoce e colonização do trato gastrointestinal do recém-nascido.
+              </p>
+              <ul class="space-y-1.5 text-slate-800 dark:text-slate-200">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-600 mt-0.5"></i>
+                  <span><strong>Maior teor de Proteínas:</strong> Rico em IgA secretória (escudo mucosal), lactoferrina e albumina.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-600 mt-0.5"></i>
+                  <span><strong>Rico em Minerais e Vitamina A:</strong> Confere a coloração dourada protetora da retina e epitélios.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-circle-minus text-amber-600 mt-0.5"></i>
+                  <span><strong>Menor concentração de Gorduras e Carboidratos:</strong> Adequado à baixa capacidade digestiva inicial do neonato.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Leite Maduro -->
+            <div class="p-5 rounded-2xl bg-sky-50/80 dark:bg-sky-950/30 border border-sky-300 dark:border-sky-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full text-xs font-black bg-sky-200 dark:bg-sky-900 text-sky-900 dark:text-sky-100 flex items-center gap-1.5">
+                  <span>🍎</span> Leite Maduro (após apojadura)
+                </span>
+                <span class="text-sky-800 dark:text-sky-300 font-bold">Lactogênese III</span>
+              </div>
+              <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                Alimento balanceado completo com alta densidade calórica e osmolaridade perfeita para a hidratação e desenvolvimento encefálico.
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-sky-800">
+                  <strong class="text-sky-600 dark:text-sky-400 block">7% Carboidratos</strong> Lactose pura (estímulo ao crescimento neuronal).
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-sky-800">
+                  <strong class="text-sky-600 dark:text-sky-400 block">3% a 5% Gorduras</strong> Ácidos graxos essenciais (DHA/ARA) e triglicerídeos.
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-sky-800">
+                  <strong class="text-sky-600 dark:text-sky-400 block">0,9% Proteínas</strong> Caseína, alfalactoalbumina, lactoferrina, lisozima.
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-sky-800">
+                  <strong class="text-sky-600 dark:text-sky-400 block">0,2% Minerais</strong> Enzima própria de autodigestão (lipase).
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800 text-[11px] text-rose-800 dark:text-rose-200 font-bold">
+                ⚠️ PÉROLA USMLE / PEDIATRIA: O leite materno possui TODAS as vitaminas, EXCETO a Vitamina K! Por essa razão, todo recém-nascido DEVE receber 1 mg de fitomenadiona (Vitamina K) IM ao nascimento para prevenir a Doença Hemorrágica do Neonato.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Latch Criteria & Mastitis Pearls -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+            <h4 class="font-bold text-teal-600 dark:text-teal-400 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-500"></i> Critérios da Pega Correta (Sem Dor):
+            </h4>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-600 dark:text-slate-300">
+              <li><strong>Boca bem aberta:</strong> Ângulo de abertura superior a 120°.</li>
+              <li><strong>Lábios evertidos:</strong> Lábio inferior voltado para fora ("boca de peixe").</li>
+              <li><strong>Pega assimétrica:</strong> Mais aréola visível acima do lábio superior do que abaixo.</li>
+              <li><strong>Queixo tocando a mama:</strong> Contato firme sem obstruir as narinas do recém-nascido.</li>
+              <li><strong>Bochechas arredondadas:</strong> Sem covinhas ou estalos durante a sucção.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/60 space-y-2">
+            <h4 class="font-bold text-rose-600 dark:text-rose-400 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-shield-virus text-rose-500"></i> Fisiologia Neuroendócrina (Slides 11 & 15):
+            </h4>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-[11px]">
+              • <strong>Sucção:</strong> Estímulo mecânico na aréola dispara reflexos neurais aferentes ao hipotálamo.<br>
+              • <strong>Prolactina (Adeno-hipófise):</strong> Responsável pela síntese contínua do leite nos ácinos mamários.<br>
+              • <strong>Ocitocina (Neuro-hipófise):</strong> Contrai as células mioepiteliais na ejeção ativa do leite e contrai o miométrio (cólicas puerperais hemostáticas).<br>
+              • <strong>Inibição da Fertilidade:</strong> A hiperprolactinemia inibe a secreção pulsátil de GnRH ➔ inibe FSH e LH ➔ anovulação transitória.
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================== CONTRAINDICAÇÕES & INIBIÇÃO FARMACOLÓGICA (Slide 17) ==================== -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Segurança Farmacológica Materno-Infantil</span>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white">Contraindicações à Amamentação & Inibição da Lactação</h3>
+            <p class="text-xs text-slate-500">Diretrizes do Ministério da Saúde do Brasil, FEBRASGO, ACOG e CDC:</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- Contraindicações Absolutas & Aconselhamento Compartilhado -->
+            <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/60 space-y-3">
+              <h4 class="font-black text-rose-800 dark:text-rose-300 uppercase tracking-wide flex items-center gap-2">
+                <i class="fa-solid fa-ban text-rose-600"></i> Contraindicações Formais à Amamentação (Brasil 2024)
+              </h4>
+              <ul class="space-y-2 text-slate-700 dark:text-slate-300 text-[11px]">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-circle-exclamation text-rose-600 mt-0.5 shrink-0"></i>
+                  <span>
+                    <strong>HTLV-1 / HTLV-2:</strong> <span class="text-rose-700 dark:text-rose-400 font-bold">CONTRAINDICAÇÃO ABSOLUTA</span> inegociável no Brasil. Risco de leucemia/linfoma de células T e mielopatia (paraparesia espástica). Conduta: fórmula infantil exclusiva doada pelo SUS + inibição láctea.
+                  </span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-circle-info text-amber-600 mt-0.5 shrink-0"></i>
+                  <div>
+                    <strong>HIV Materno:</strong> <span class="text-amber-700 dark:text-amber-400 font-bold">NÃO É MAIS TRATADO COMO PROIBIÇÃO BINÁRIA</span> (Protocolo MS 2022/2024 / AAP 2024 / OMS).
+                    <p class="mt-0.5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                      • <strong>Recomendação Primária do SUS:</strong> Fórmula infantil + inibição com <strong>Cabergolina 1 mg VO dose única</strong> (máxima segurança, elimina o risco residual de 0,5-1%).<br>
+                      • <strong>Amamentação PERMITIDA sob Decisão Compartilhada</strong> se cumpridos <strong>TODOS</strong> os critérios de segurança:<br>
+                      &nbsp;&nbsp;1. Carga viral <strong>indetectável (&lt; 50 cópias/mL)</strong> mantida no 3º trimestre;<br>
+                      &nbsp;&nbsp;2. Adesão documentada &gt; 95% à TARV materno;<br>
+                      &nbsp;&nbsp;3. Monitoramento mensal da carga viral materna e trimestral do lactente;<br>
+                      &nbsp;&nbsp;4. Aleitamento materno <strong>exclusivo</strong> (proibição absoluta de alimentação mista);<br>
+                      &nbsp;&nbsp;5. Suspensão imediata se mastite clínica ou fissura com sangramento ativo.
+                    </p>
+                  </div>
+                </li>
+                <li>• <strong>Erro Inato do Metabolismo Neonatal:</strong> <strong>Galactosemia clássica</strong> no RN (contraindicação absoluta por deficiência da galactose-1-fosfato uridiltransferase).</li>
+                <li>• <strong>Uso de Drogas Ilícitas Ativas:</strong> Cocaína, crack, heroína, anfetaminas (excreção alta e risco de convulsão e neurotoxicidade no lactente).</li>
+                <li>• <strong>Quimioterapia / Radioterapia Ativa:</strong> Citotóxicos e antimetabólicos (metotrexato, ciclofosfamida).</li>
+                <li>• <strong>Lítio:</strong> Contraindicado (alto teor no leite materno, estreito índice terapêutico, hipotonia e toxicidade neonatal).</li>
+                <li>• <strong>Amiodarona:</strong> Contraindicada (sobrecarga de iodo e meia-vida longa de até 100 dias com risco de hipotireoidismo e bócio neonatal).</li>
+                <li>• <strong>Topiramato:</strong> <span class="text-teal-700 dark:text-teal-400 font-bold">Compatível com monitoramento clínico</span> (baixa excreção no leite materno; acompanhar ganho ponderal e sonolência no RN).</li>
+              </ul>
+            </div>
+
+            <!-- Inibição da Lactação -->
+            <div class="p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900/60 space-y-3">
+              <h4 class="font-black text-teal-800 dark:text-teal-300 uppercase tracking-wide flex items-center gap-2">
+                <i class="fa-solid fa-prescription-bottle-medical text-teal-600"></i> Esquemas de Inibição Farmacológica
+              </h4>
+              <p class="text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed">
+                Indicada imediatamente pós-parto em casos de HIV/HTLV, óbito fetal, adoção ou contraindicação médica absoluta:
+              </p>
+              
+              <div class="space-y-2">
+                <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-teal-300 dark:border-teal-800">
+                  <div class="flex items-center justify-between mb-1">
+                    <strong class="text-teal-700 dark:text-teal-300">Cabergolina (Padrão-Ouro / 1ª Escolha):</strong>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200">Dose Única</span>
+                  </div>
+                  <p class="text-[11px] text-slate-600 dark:text-slate-300">
+                    <strong>2 comprimidos de 0,5 mg (1,0 mg total)</strong>, via oral, dose única nas primeiras 24 horas pós-parto. Agonista dopaminérgico potente com mínimos efeitos colaterais.
+                  </p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700">
+                  <div class="flex items-center justify-between mb-1">
+                    <strong class="text-slate-700 dark:text-slate-300">Bromocriptina (Esquema Histórico):</strong>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">10-14 Dias</span>
+                  </div>
+                  <p class="text-[11px] text-slate-600 dark:text-slate-300">
+                    1,25 mg a 2,5 mg, via oral, a cada 8 a 12 horas, durante 10 a 14 dias consecutivos. Maior taxa de rebote e risco de hipertensão/náuseas.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-[10px] text-amber-900 dark:text-amber-200">
+                <strong>Medidas não farmacológicas adjuvantes:</strong> Enfaixamento compressivo das mamas, evitar ordenha, evitar banho de água quente sobre o tórax e uso de sutiã apertado.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

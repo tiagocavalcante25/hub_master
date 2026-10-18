@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth" style="overflow-x: hidden !important; width: 100% !important; max-width: 100% !important;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Assistência ao Parto & Puerpério | Guia Interativo USMLE Step 2/3 & Ivy League</title>
+  
+  <!-- Meta tags for SEO, Mobile Web App & Social Sharing -->
+  <meta name="description" content="Guia definitivo e plataforma interativa de Assistência ao Parto e Puerpério. Cobre mecanismo do parto, partograma da OMS, distócias, analgesia, HPP, aleitamento materno e complicações puerperais para USMLE Step 2 CK, Step 3 e Residência Médica.">
+  <meta name="keywords" content="parto, puerpério, partograma, distócia de ombros, McRoberts, hemorragia pós-parto, balão de Bakri, endometrite, USMLE Step 2 CK, aleitamento materno">
+  <meta name="author" content="Internato GO & Deep Learning Medical Hub">
+  <meta name="theme-color" content="#0d9488">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Prevenção de Flash of Unstyled Content (FOUC) ao carregar tema escuro e escala de fonte -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        const savedFontSize = localStorage.getItem('fontSize') || 'normal';
+        document.documentElement.setAttribute('data-font-size', savedFontSize);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200 antialiased selection:bg-teal-500 selection:text-white" style="overflow-x: hidden !important; width: 100% !important; max-width: 100% !important; padding-top: var(--header-height, 7.5rem) !important;">
+
+  <!-- ======================================================================
+       HEADER / NAVBAR FIXA NO TOPO (POSITION: FIXED) COM DESIGN RESPONSIVO FLUIDO
+       SEM GAVETA LATERAL REDUNDANTE - ACESSO DIRETO A TODOS OS MÓDULOS E FERRAMENTAS
+       ====================================================================== -->
+  <header class="glass-header border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm transition-colors" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; max-width: 100% !important; z-index: 50 !important;">
+    <!-- Nível 1: Barra Principal Superior -->
+    <div class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
+      <div class="header-main-bar flex flex-wrap items-center justify-between min-h-[3.75rem] sm:min-h-[4rem] h-auto py-1.5 gap-y-2 gap-x-2 sm:gap-4">
+        
+        <!-- Brand & Title (Adaptação inteligente para qualquer largura de tela) -->
+        <a href="#modulo-12" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0" title="Ir para o início do Guia de Parto & Puerpério">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform shrink-0">
+            <i class="fa-solid fa-person-breastfeeding text-sm sm:text-base"></i>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1.5 sm:gap-2">
+              <span class="nav-brand-title font-black tracking-tight text-slate-900 dark:text-white leading-none truncate">Parto & Puerpério</span>
+              <span class="text-[10px] sm:text-xs uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 border border-teal-200 dark:border-teal-800 shrink-0">Parte 2</span>
+            </div>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block truncate">USMLE Step 2/3 • Residência Médica • FEBRASGO / OMS</span>
+          </div>
+        </a>
+
+        <!-- Quick Search Trigger Button (Ctrl+K) -->
+        <div class="flex items-center flex-1 min-w-[140px] max-w-[220px] sm:max-w-xs md:max-w-sm lg:max-w-md mx-1 sm:mx-3">
+          <button onclick="openSearchModal()" title="Pesquisa Rápida (Ctrl+K)" class="w-full px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 hover:border-teal-500 text-xs font-medium flex items-center justify-between transition-all cursor-pointer">
+            <div class="flex items-center gap-1.5 sm:gap-2 truncate">
+              <i class="fa-solid fa-magnifying-glass text-teal-500 text-xs sm:text-sm shrink-0"></i>
+              <span class="truncate text-[11px] sm:text-xs">Buscar no guia...</span>
+            </div>
+            <kbd class="hidden md:inline-block px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] text-slate-400 border border-slate-200 dark:border-slate-700 shrink-0">Ctrl K</kbd>
+          </button>
+        </div>
+
+        <!-- Action Buttons & Utilities -->
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+          
+          <!-- Didactic Mode Toggle (Modo 5 Anos) -->
+          <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs font-bold text-amber-700 dark:text-amber-400" title="Ativa ou destaca analogias didáticas (Modo 5 Anos)">
+            <label for="didactic-toggle" class="cursor-pointer flex items-center gap-1.5">
+              <span class="text-xs hidden lg:inline">🎈 Modo 5 Anos</span>
+              <span class="text-xs lg:hidden">🎈 5 Anos</span>
+              <input type="checkbox" id="didactic-toggle" checked onchange="toggleDidacticMode()" class="sr-only peer">
+              <div class="relative w-7 h-3.5 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-2.5 after:w-2.5 after:transition-all peer-checked:bg-amber-500"></div>
+            </label>
+          </div>
+
+          <!-- Seletor Dinâmico de Tamanho de Fonte (A / A+ / A++) -->
+          <div class="flex items-center bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-0.5" role="group" aria-label="Controle de tamanho de fonte">
+            <button type="button" onclick="setFontSize('normal')" data-font-btn="normal" aria-label="Fonte padrão" title="Fonte padrão" class="font-size-btn px-2 py-1 text-xs font-bold rounded-lg transition-colors">A</button>
+            <button type="button" onclick="setFontSize('large')" data-font-btn="large" aria-label="Fonte ampliada" title="Fonte ampliada (+12%)" class="font-size-btn px-2 py-1 text-xs font-bold rounded-lg transition-colors">A+</button>
+            <button type="button" onclick="setFontSize('xlarge')" data-font-btn="xlarge" aria-label="Fonte máxima" title="Fonte máxima (+24%)" class="font-size-btn px-2 py-1 text-xs font-bold rounded-lg transition-colors">A++</button>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <button onclick="toggleDarkMode()" title="Alternar tema claro/escuro" aria-label="Alternar modo claro/escuro" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-teal-500 flex items-center justify-center transition-all cursor-pointer">
+            <i id="theme-icon" class="fa-solid fa-moon text-xs sm:text-sm"></i>
+          </button>
+
+          <!-- Print / PDF Export Button -->
+          <button onclick="window.print()" title="Exportar ou Imprimir Resumo" class="hidden sm:flex p-1.5 px-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold items-center gap-1.5 transition-all shadow-md shadow-teal-500/20 cursor-pointer">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span class="hidden md:inline">PDF</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Nível 2: Faixa Subnav de Módulos & Ferramentas (Flexbox com flex-wrap e min-height sem sobreposição) -->
+    <div class="border-t border-slate-200/70 dark:border-slate-800/70 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
+        <div id="module-subnav" class="header-modules-nav flex flex-wrap items-center gap-1.5 sm:gap-2 min-h-[2.6rem] py-2 text-xs font-semibold">
+          <span class="text-[11px] sm:text-xs uppercase font-extrabold text-slate-400 dark:text-slate-500 mr-1 flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-book-medical text-teal-500"></i> Módulos:
+          </span>
+          <a href="#modulo-12" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">12</span>
+            Mecanismo
+          </a>
+          <a href="#modulo-13" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">13</span>
+            Partograma
+          </a>
+          <a href="#modulo-14" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">14</span>
+            Analgesia
+          </a>
+          <a href="#modulo-15" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">15</span>
+            Humanizado
+          </a>
+          <a href="#distocia-ombros" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">16</span>
+            Distócias
+          </a>
+          <a href="#modulo-17" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">17</span>
+            HPP & Bakri
+          </a>
+          <a href="#modulo-18" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">18</span>
+            Puerpério
+          </a>
+          <a href="#modulo-19" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">19</span>
+            Aleitamento
+          </a>
+          <a href="#modulo-20" class="subnav-pill px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800/80 transition-colors flex items-center gap-1 shrink-0">
+            <span class="w-4 h-4 rounded bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 text-[10px] font-bold flex items-center justify-center">20</span>
+            Complicações
+          </a>
+
+          <!-- Separador -->
+          <span class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1 shrink-0"></span>
+
+          <!-- Ferramentas Clínicas Diretas -->
+          <span class="text-[11px] sm:text-xs uppercase font-extrabold text-slate-400 dark:text-slate-500 mr-1 flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-stethoscope text-amber-500"></i> Treino:
+          </span>
+          <a href="#simulador-partograma" class="subnav-pill px-2.5 py-1 rounded-lg text-cyan-700 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-chart-line text-xs"></i>
+            Partograma Vivo
+          </a>
+          <a href="#helperr-trainer" class="subnav-pill px-2.5 py-1 rounded-lg text-orange-700 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-stopwatch text-xs"></i>
+            HELPERR
+          </a>
+          <a href="#calculadora-hpp" class="subnav-pill px-2.5 py-1 rounded-lg text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-droplet text-xs"></i>
+            Risco HPP
+          </a>
+          <a href="#calculadora-involucao" class="subnav-pill px-2.5 py-1 rounded-lg text-indigo-700 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-clock-rotate-left text-xs"></i>
+            Involução
+          </a>
+          <a href="#calculadora-epds" class="subnav-pill px-2.5 py-1 rounded-lg text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-heart-pulse text-xs"></i>
+            Escala EPDS
+          </a>
+          <a href="#flashcards-section" class="subnav-pill px-2.5 py-1 rounded-lg text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-layer-group text-xs"></i>
+            Flashcards 3D
+          </a>
+          <a href="#quiz-section" class="subnav-pill px-2.5 py-1 rounded-lg text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-graduation-cap text-xs"></i>
+            Simulado
+          </a>
+          <a href="#high-yield-summary" class="subnav-pill px-2.5 py-1 rounded-lg text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/40 transition-colors flex items-center gap-1 shrink-0">
+            <i class="fa-solid fa-bolt text-xs"></i>
+            High-Yield
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- READING PROGRESS BAR - Attached right at header bottom -->
+    <div id="reading-progress" class="h-1 bg-gradient-to-r from-teal-400 via-emerald-500 to-cyan-500 transition-all duration-150 pointer-events-none" style="width: 0%"></div>
+  </header>

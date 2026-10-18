@@ -1,0 +1,344 @@
+<!-- ==================== MÓDULO 20: COMPLICAÇÕES PUERPERAIS & SAÚDE MENTAL ==================== -->
+    <section id="modulo-20" class="glass-panel p-6 sm:p-8 rounded-3xl glow-card scroll-mt-28">
+      <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-4 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Módulo 20 · Puerpério Patológico</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Infecções Puerperais, Doenças Tromboembólicas & Transtornos Psiquiátricos</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Critérios diagnósticos formais, espectro de complicações mamárias, TVP/TEP e rastreio com a Escala de Edimburgo (EPDS).</p>
+        </div>
+        <button data-speech-btn="complicacoes-content" onclick="speakSection('complicacoes-content')" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 shrink-0">
+          <i class="fa-solid fa-volume-high text-teal-600 dark:text-teal-400"></i> Ouvir Resumo
+        </button>
+      </div>
+
+      <div id="complicacoes-content" class="space-y-8">
+        <!-- CRITÉRIO DIAGNÓSTICO OFICIAL DE INFECÇÃO PUERPERAL (Slide 29) -->
+        <div class="p-5 rounded-3xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-300 dark:border-rose-900/60 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-rose-200 dark:border-rose-900/60 pb-3">
+            <span class="text-xs font-black uppercase tracking-wider text-rose-700 dark:text-rose-300 flex items-center gap-2">
+              <i class="fa-solid fa-thermometer text-rose-600 text-base"></i> Critério Diagnóstico Oficial de Infecção Puerperal (Zugaib / CDC)
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-200 dark:bg-rose-900 text-rose-900 dark:text-rose-100">Regra dos 10 Dias</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-700 dark:text-slate-300">
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900">
+              <strong class="text-rose-700 dark:text-rose-300 block mb-1">Definição Térmica:</strong>
+              Quadro febril com <strong>temperatura axilar ≥ 38,0ºC</strong> com duração <strong>&gt; 48 horas</strong>, dentro dos primeiros 10 dias do puerpério.
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900">
+              <strong class="text-rose-700 dark:text-rose-300 block mb-1">Exclusão Mandatória:</strong>
+              <strong>Excluem-se as primeiras 24 horas pós-parto</strong>, período em que a elevação térmica discreta (&lt; 38°C) decorre de desidratação, estresse do parto ou apojadura.
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900">
+              <strong class="text-rose-700 dark:text-rose-300 block mb-1">Fator de Risco Nº 1:</strong>
+              <strong>Parto Cesárea</strong> é o principal fator de risco isolado (eleva o risco de endometrite em até 20 vezes em comparação com o parto vaginal).
+            </div>
+          </div>
+          <div class="p-3 rounded-xl bg-rose-100/60 dark:bg-rose-900/30 border border-rose-300 dark:border-rose-800 text-[11px] text-rose-900 dark:text-rose-200">
+            <strong>Complicações Graves:</strong> Salpingite, parametrite, abscessos pélvicos, peritonite generalizada, tromboflebite séptica pélvica, choque séptico e fasceíte necrotizante.
+          </div>
+        </div>
+
+        <!-- ==================== TABELA COMPARATIVA DE INFECÇÕES PUERPERAIS (Slide 35) ==================== -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-table-list text-teal-500"></i> Diagnóstico Diferencial das Infecções Puerperais (Tabela Oficial)
+            </h3>
+            <span class="text-xs text-slate-500">Slide 35 · Zugaib 2020</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- 1. Infecção de Ferida Operatória -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black uppercase text-amber-600 dark:text-amber-400">Ferida Operatória</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 font-bold">Cesárea / Epísio</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-600 dark:text-slate-300 text-[11px]">
+                <li>• <strong>Classificação:</strong> Superficial (pele/subcutâneo) vs Profunda (aponeurose/músculo).</li>
+                <li>• <strong>Sinais Clínicos:</strong> Sinais flogísticos locais (eritema, calor, edema, hiperestesia).</li>
+                <li>• <strong>Febre:</strong> Tipicamente febre baixa (&lt; 38,5°C).</li>
+                <li>• <strong>Secreção:</strong> Deiscência de sutura, drenagem de exsudato purulento ou sero-hemático.</li>
+              </ul>
+              <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 font-bold text-amber-900 dark:text-amber-200 text-[11px]">
+                Esquema Antibiótico: Oxacilina 1g EV 6/6h + Clindamicina 600 mg EV 6/6h (ou Cefazolina + Drenagem cirúrgica e lavagem).
+              </div>
+            </div>
+
+            <!-- 2. Endometrite Puerperal -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black uppercase text-rose-600 dark:text-rose-400">Endometrite Puerperal</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300 font-bold">Causa Nº 1</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-600 dark:text-slate-300 text-[11px]">
+                <li>• <strong>Tríade Clínica:</strong> Febre alta (≥ 38,5°C), dor/irritabilidade à palpação uterina e subinvolução uterina.</li>
+                <li>• <strong>Colo Uterino:</strong> Colo aberto e pérvio após o 3º dia pós-parto.</li>
+                <li>• <strong>Lóquios:</strong> Loquiação fétida e abundante (<em>Atenção:</em> infecção por <em>Streptococcus pyogenes</em> causa secreção serossanguinolenta sem odor!).</li>
+                <li>• <strong>Microbiologia:</strong> Polimicrobiana (aeróbios + anaeróbios em 70%): GBS, Enterococcus, E. coli, Bacteroides, Peptostreptococcus.</li>
+                <li>• <strong>Leucograma:</strong> Leucocitose importante (15.000 a 30.000/mm³) com desvio para esquerda.</li>
+              </ul>
+              <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800 font-bold text-rose-900 dark:text-rose-200 text-[11px] space-y-1.5">
+                <div>
+                  <strong>Padrão-Ouro Inicial:</strong> Clindamicina 900 mg EV 8/8h (ou 600 mg 6/6h) + Gentamicina 5 mg/kg/dia EV em dose única diária até afebril por 48h.
+                </div>
+                <div class="pt-1 border-t border-rose-300 dark:border-rose-700/60 text-[10px] space-y-1">
+                  <span class="text-rose-700 dark:text-rose-300 font-black uppercase flex items-center gap-1">
+                    <i class="fa-solid fa-triangle-exclamation"></i> FALHA TERAPÊUTICA / FEBRE REFRATÁRIA EM 48 A 72 HORAS:
+                  </span>
+                  <p class="leading-relaxed">
+                    1. <strong>Adicionar Ampicilina 2g EV 6/6h:</strong> Cobertura indispensável para <em>Enterococcus faecalis</em> e cepas de GBS resistentes à clindamicina.<br>
+                    2. <strong>USG Pélvica / TC com Contraste:</strong> Buscar abscesso pélvico intracavitário, restos placentários retidos ou <strong>Tromboflebite Séptica Pélvica (TSP)</strong>.<br>
+                    3. <strong>Hemoculturas (2 pares):</strong> Coleta antes da troca de antimicrobianos.<br>
+                    4. <strong>Se abscesso &gt; 5 cm:</strong> Drenagem percutânea guiada por imagem ou laparotomia.<br>
+                    5. <strong>Se Alergia Grave a Beta-lactâmicos:</strong> Vancomicina 15-20 mg/kg EV 12/12h + Aztreonam 2g EV 8/8h + Metronidazol 500 mg EV 8/8h.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Mastite Puerperal -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black uppercase text-teal-600 dark:text-teal-400">Mastite Aguda</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-300 font-bold">Mama Puerperal</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-600 dark:text-slate-300 text-[11px]">
+                <li>• <strong>Cronologia:</strong> Surge entre a <strong>3ª e 4ª semanas pós-parto</strong> (muito rara anteparto).</li>
+                <li>• <strong>Etiologia:</strong> Principal patógeno é o <strong><em>Staphylococcus aureus</em></strong> originário da nasofaringe do recém-nascido.</li>
+                <li>• <strong>Sinais Clínicos:</strong> Eritema doloroso em cunha, calor local, ingurgitamento prévio e ducto lactífero bloqueado.</li>
+                <li>• <strong>Febre & Calafrios:</strong> Febre com calafrios de início abrupto.</li>
+                <li>• <strong>Conduta Vital:</strong> <strong>NÃO SUSPENDER O ALEITAMENTO!</strong> Esvaziamento mamário frequente com mamadas e ordenha.</li>
+              </ul>
+              <div class="p-3 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-300 dark:border-teal-800 font-bold text-teal-900 dark:text-teal-200 text-[11px]">
+                Antimicrobiano: Oxacilina 2g IV 6/6h (casos graves/hospitalares) ou Cefalosporina (Cefalexina 500 mg VO 6/6h por 10-14 dias).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== ESPECTRO DE ALTERAÇÕES MAMÁRIAS (Slides 31 a 34) ==================== -->
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4">
+          <h3 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <i class="fa-solid fa-disease text-teal-500"></i> Espectro Clínico das Alterações Mamárias no Puerpério
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <!-- Ingurgitamento -->
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200 uppercase">48-72h</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Ingurgitamento Mamário</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Estase láctea súbita decorrente da apojadura em puérperas com bom estado geral. Mamas tensas, hiperdistendidas, hipertermia local e sistêmica. Conduta: ordenha de alívio e compressas frias após a mamada.
+              </p>
+            </div>
+
+            <!-- Fissuras -->
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 uppercase">Trauma de Pega</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Fissuras Mamárias</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Erosões alongadas dolorosas na base do mamilo decorrentes de pega inadequada do recém-nascido, má técnica ou ingurgitamento. Conduta: correção imediata da pega, banho de sol e espalhar o próprio leite na aréola.
+              </p>
+            </div>
+
+            <!-- Mastite -->
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200 uppercase">3ª-4ª Semana</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Mastite Infecciosa</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Invasão bacteriana (<em>S. aureus</em>) a partir de fissuras ou estase. Eritema em cunha, febre alta e calafrios. Conduta: Cefalexina ou Oxacilina + manter o esvaziamento contínuo das mamas.
+              </p>
+            </div>
+
+            <!-- Abscesso -->
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 uppercase">Coleção Flutuante</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Abscesso Mamário</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Coleção purulenta encapsulada no parênquima mamário com flutuação à palpação. Complicação da mastite mal tratada. Conduta: <strong>Antibioticoterapia + Drenagem cirúrgica sob anestesia</strong> (ou punção guiada).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== DOENÇAS TROMBOEMBÓLICAS NO PUERPÉRIO (Slide 36) ==================== -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Emergência Vascular Puerperal</span>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white">Tromboembolismo Venoso: Trombose Venosa Profunda (TVP) & Embolia Pulmonar (TEP)</h3>
+            <p class="text-xs text-slate-500">O puerpério imediato e mediato concentra o maior risco de trombose por estase pélvica, trauma endotelial e hipercoagulabilidade:</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- TVP -->
+            <div class="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/60 space-y-2">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-indigo-900 dark:text-indigo-300">Trombose Venosa Profunda (TVP)</h4>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-200 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">MMII</span>
+              </div>
+              <ul class="space-y-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                <li>• <strong>Sinais Clínicos:</strong> Dor súbita em membro inferior, edema assimétrico (diferença de empastamento da panturrilha &gt; 2-3 cm).</li>
+                <li>• <strong>Eritema e calor local:</strong> <strong>Sinal de Homans positivo</strong> (dor na panturrilha à dorsiflexão passiva do pé).</li>
+                <li>• <strong>Exame Diagnóstico Padrão-Ouro:</strong> <strong>Dopplervelocimetria venosa com compressão dos membros inferiores</strong>.</li>
+              </ul>
+            </div>
+
+            <!-- TEP -->
+            <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/60 space-y-2">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-rose-900 dark:text-rose-300">Tromboembolismo Pulmonar (TEP)</h4>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-200 dark:bg-rose-900 text-rose-800 dark:text-rose-200">Risco Fatal</span>
+              </div>
+              <ul class="space-y-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                <li>• <strong>Sinais Clínicos:</strong> Dispneia súbita inexplicada, taquicardia materna, dor torácica de padrão pleurítico e escarros hemoptoicos.</li>
+                <li>• <strong>Exames de Imagem:</strong> <strong>Angiotomografia Computadorizada (AngioTC) de tórax</strong>, Angiorressonância ou Cintilografia de Ventilação-Perfusão (V/Q).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-3 text-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-teal-400 font-bold uppercase text-[11px] flex items-center gap-2">
+                <i class="fa-solid fa-syringe"></i> Condutas no Tromboembolismo Venoso Puerperal (RCOG / FEBRASGO 2024)
+              </span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-teal-900 text-teal-300 font-bold">Protocolo de Segurança</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <strong class="text-amber-400 block mb-1">1. Tromboprofilaxia em Alto Risco (6 Semanas):</strong>
+                Puérperas de alto risco (cesárea de emergência, IMC &gt; 30 kg/m², trombofilias hereditárias/adquiridas, hemorragia volumosa periparto, infecção ativa ou imobilização): <strong>Enoxaparina 40 mg SC 1x/dia</strong> por <strong>6 semanas pós-parto</strong> (período que concentra &gt; 80% das mortes tardias por TEP).
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <strong class="text-rose-400 block mb-1">2. Tratamento Anticoagulante Pleno (TVP/TEP Confirmado):</strong>
+                Iniciar imediatamente <strong>Enoxaparina 1 mg/kg SC de 12 em 12 horas</strong> (ou HNF em bomba com alvo de TTPa 1,5 a 2,5 vezes o controle). Duração mínima do tratamento pleno: <strong>3 a 6 meses</strong> no total e por <strong>pelo menos 6 semanas pós-parto</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== TRANSTORNOS PSIQUIÁTRICOS PUERPERAIS (Slide 37) ==================== -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Saúde Mental & Psiquiatria Perinatal</span>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white">Baby Blues vs Depressão Pós-Parto vs Psicose Puerperal (ECT)</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- Baby Blues -->
+            <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200 uppercase">3º ao 14º Dia</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Disforia Pós-Parto (Baby Blues)</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Atinge até 80% das puérperas. Início no 3º dia e <strong>desaparece espontaneamente no 14º dia</strong>. Decorre de oscilação hormonal abrupta, fadiga, privação de sono e ansiedade sobre cuidar do recém-nascido. Conduta: suporte emocional e acolhimento familiar (não requer psicofármacos).
+              </p>
+            </div>
+
+            <!-- Depressão Pós-Parto -->
+            <div class="p-4 rounded-2xl bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-200 dark:bg-purple-900 text-purple-800 dark:text-purple-200 uppercase">1º Mês até 12 Meses</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Depressão Pós-Parto (DPP)</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                Episódio de depressão maior surgindo nas primeiras <strong>4 semanas pós-parto</strong>. Tristeza profunda, choro frequente, anedonia, culpa excessiva, falta de interesse pelos cuidados do RN, recusa à amamentação e afastamento afetivo.
+                <br>• <strong>Tratamento:</strong> Terapia Cognitivo-Comportamental (TCC) + Farmacológico (ISRS: Sertralina de 1ª escolha pela baixa excreção no leite).
+              </p>
+            </div>
+
+            <!-- Eletroconvulsoterapia / Psicose -->
+            <div class="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 space-y-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-200 dark:bg-rose-900 text-rose-800 dark:text-rose-200 uppercase">Emergência Psiquiátrica</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">Indicações de ECT (Slide 37)</h4>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                A <strong>Eletroconvulsoterapia (ECT)</strong> é indicada quando há necessidade de resposta terapêutica imediata e salvamento de vida em:
+                <br>• Depressão grave com <strong>sintomas psicóticos</strong> ou catatonia;
+                <br>• Episódios de <strong>mania aguda</strong> / psicose puerperal;
+                <br>• Puérperas com <strong>risco iminente de suicídio ou infanticídio</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SÍNDROME DE SHEEHAN ==================== -->
+        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+          <div class="text-xs font-bold uppercase text-amber-600 dark:text-amber-400">Sequela Tardia de Choque Hemorrágico no Parto</div>
+          <h4 class="text-base font-black text-slate-900 dark:text-white">Síndrome de Sheehan (Necrose Hipofisária Isquêmica)</h4>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-[11px]">
+            Consequência direta de hemorragia pós-parto volumosa (HPP) com choque hipovolêmico prolongado. A hipertrofia fisiológica da adeno-hipófise na gestação torna-a vulnerável ao colapso pressórico.
+            <br>• <strong>Sinal Precoce Patognomônico (1º Sinal a Surgir):</strong> <strong>AGALACTIA PRECOCE</strong> (ausência total de apojadura e produção de leite por necrose precoce dos lactotrofos hipofisários), que antecede a <strong>amenorreia secundária</strong>, perda de pelos axilares/pubianos, hipotireoidismo e insuficiência adrenal crônica.
+          </p>
+        </div>
+
+        <!-- INTERACTIVE EDINBURGH DEPRESSION SCALE (EPDS) -->
+        <div id="calculadora-epds" class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 scroll-mt-28">
+          <div class="module-header flex flex-wrap items-center justify-between min-h-[2.75rem] gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Instrumento de Rastreio Rápido</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white">Escala de Depressão Pós-Parto de Edimburgo (EPDS)</h3>
+              <p class="text-xs text-slate-500">Autoavaliação validada para detecção precoce de depressão pós-parto na atenção primária e hospitalar:</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-500">Escore Total (0-30):</span>
+              <span id="epds-score-val" class="text-2xl font-mono font-black text-teal-600 dark:text-teal-400">0</span>
+            </div>
+          </div>
+
+          <!-- Sample Key Questions -->
+          <div class="space-y-4 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">1. Fui capaz de rir e ver o lado divertido das coisas:</label>
+              <select class="epds-select w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white" onchange="calculateEPDS()">
+                <option value="0">Tanto quanto sempre pude (0 pontos)</option>
+                <option value="1">Não tanto agora (1 ponto)</option>
+                <option value="2">Definitivamente menos agora (2 pontos)</option>
+                <option value="3">De modo nenhum (3 pontos)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">2. Olhei para o futuro com prazer e esperança:</label>
+              <select class="epds-select w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white" onchange="calculateEPDS()">
+                <option value="0">Tanto quanto sempre fiz (0 pontos)</option>
+                <option value="1">Um pouco menos do que costumava (1 ponto)</option>
+                <option value="2">Definitivamente menos do que costumava (2 pontos)</option>
+                <option value="3">Quase nunca (3 pontos)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">3. Senti-me tão triste que tive dificuldade para dormir:</label>
+              <select class="epds-select w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white" onchange="calculateEPDS()">
+                <option value="0">Nunca ou raramente (0 pontos)</option>
+                <option value="1">Não muito frequentemente (1 ponto)</option>
+                <option value="2">Sim, algumas vezes (2 pontos)</option>
+                <option value="3">Sim, na maior parte do tempo (3 pontos)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-rose-600 dark:text-rose-400 mb-1">4. O pensamento de fazer mal a mim mesma ocorreu-me:</label>
+              <select id="epds-self-harm" class="epds-select w-full p-2.5 rounded-xl border border-rose-300 dark:border-rose-700 bg-rose-50/50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 font-bold" onchange="calculateEPDS()">
+                <option value="0">Nunca (0 pontos)</option>
+                <option value="1">Raramente (1 ponto)</option>
+                <option value="2">Algumas vezes (2 pontos)</option>
+                <option value="3">Sim, com frequência (3 pontos)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Result Box -->
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase font-bold text-slate-400">Classificação:</span>
+              <span id="epds-badge" class="text-xs px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-800">Baixo Risco (Score &lt; 10)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300">
+              <strong>Conduta Recomendada:</strong> <span id="epds-action">Sintomatologia depressiva improvável. Reassegurar apoio familiar habitual e consulta de rotina pós-parto.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 text-[11px] text-purple-900 dark:text-purple-200 space-y-1">
+              <strong class="block text-purple-800 dark:text-purple-300 font-bold uppercase text-[10px]">Parâmetros Clínicos Validados (FEBRASGO / ACOG):</strong>
+              <p>• <strong>Score ≥ 13:</strong> Ponto de corte com máxima acurácia para triagem positiva de Depressão Pós-Parto (indicação de psicoterapia e Sertralina).<br>
+              • <strong>Score 10 a 12:</strong> Risco moderado / sofrimento emocional leve (reavaliação seriada em 14 dias).<br>
+              • <strong>Item 4 (Item 10 da EPDS - Autoextermínio) ≥ 1:</strong> Alerta imediato! Qualquer pontuação diferente de zero demanda <strong>avaliação psiquiátrica de urgência</strong>, independentemente do escore global.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
