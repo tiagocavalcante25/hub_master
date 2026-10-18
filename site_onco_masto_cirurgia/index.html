@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Oncologia Ginecológica, Mastologia e Cirurgia | Portal Interativo</title>
+  <meta name="description" content="Guia Completo e Interativo de Oncologia Ginecológica, Mastologia e Cirurgia (Parte 7). USMLE Step 2 CK / CS / Step 3, FEBRASGO, INCA 2024–2025, USPSTF 2024, FIGO 2023 e ACOG.">
+
+  <!-- Configurações Mobile Web App para iOS e Android -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Onco-Masto-Cirurgia">
+  <meta name="theme-color" content="#e11d48" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Previne Flash of Unstyled Content (FOUC) -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        const savedFont = localStorage.getItem('fontSizePreference');
+        if (savedFont) {
+          document.documentElement.setAttribute('data-font-size', savedFont);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          screens: {
+            'xs': '480px'
+          },
+          colors: {
+            med: {
+              rose: '#e11d48',
+              crimson: '#be123c',
+              navy: '#0f172a',
+              sky: '#0284c7',
+              emerald: '#059669',
+              amber: '#d97706'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col antialiased transition-colors duration-200">
+
+  <!-- ======================================================================
+       NAVBAR SUPERIOR FIXA (POSITION: FIXED, 100% RESPONSIVA, SEM GAVETA REDUNDANTE)
+       ====================================================================== -->
+  <header class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+    <div class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16 gap-2 sm:gap-3">
+        
+        <!-- Logo e Título com Identidade Visual -->
+        <a href="#" class="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-shrink group" title="Parte 7 - Início">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-rose-600 via-pink-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-rose-500/20 group-hover:scale-105 transition-transform flex-shrink-0">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-xs sm:text-base tracking-tight text-slate-900 dark:text-white truncate">Onco • Masto • Cirurgia</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-200 dark:border-rose-800 hidden xs:inline-block flex-shrink-0">Parte 7 • USMLE</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Barra de Busca Global Inteligente (Desktop & Tablet) -->
+        <div class="hidden md:flex items-center flex-1 max-w-sm lg:max-w-md mx-2 lg:mx-4">
+          <div class="relative w-full">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="global-search" placeholder="Buscar módulos, condutas (BI-RADS, HPV, FIGO...)" 
+              class="w-full pl-9 pr-14 py-2 text-xs rounded-xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500 text-slate-800 dark:text-slate-200 placeholder-slate-400 transition-all">
+            <kbd class="hidden lg:inline-flex items-center absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded shadow-sm">Ctrl K</kbd>
+          </div>
+        </div>
+
+        <!-- Ações Rápidas: Ferramentas, Casos, Acessibilidade e Tema -->
+        <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+          
+          <nav class="flex items-center gap-1 sm:gap-1.5">
+            <a href="#ferramentas-clinicas" class="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg font-bold text-xs text-rose-700 dark:text-rose-300 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/40 border border-rose-200/80 dark:border-rose-800/60 transition-colors" title="Calculadoras Clínicas">
+              <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+              <span class="hidden sm:inline">Calculadoras</span>
+            </a>
+            <a href="#galeria-visual" class="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg font-bold text-xs text-purple-700 dark:text-purple-300 bg-purple-50 hover:bg-purple-100 dark:bg-purple-950/40 dark:hover:bg-purple-900/40 border border-purple-200/80 dark:border-purple-800/60 transition-colors" title="Galeria de Imagens">
+              <i data-lucide="image" class="w-3.5 h-3.5"></i>
+              <span class="hidden sm:inline">Imagens HD</span>
+            </a>
+            <a href="#casos-clinicos" class="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg font-bold text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/40 border border-emerald-200/80 dark:border-emerald-800/60 transition-colors" title="16 Casos USMLE">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+              <span class="hidden sm:inline">16 Casos</span>
+            </a>
+          </nav>
+
+          <!-- Divisor -->
+          <div class="h-5 w-px bg-slate-200 dark:bg-slate-800 mx-0.5 sm:mx-1"></div>
+
+          <!-- Seletor de Tamanho de Fonte (A- / A / A+) -->
+          <div class="inline-flex items-center rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/90 dark:bg-slate-900/90 p-0.5">
+            <button id="font-decrease" class="px-1.5 py-0.5 text-[11px] font-bold text-slate-600 dark:text-slate-300 hover:text-rose-600 rounded" title="Diminuir fonte">A-</button>
+            <button id="font-reset" class="px-1.5 py-0.5 text-[11px] font-bold text-slate-800 dark:text-slate-100 hover:text-rose-600 rounded border-x border-slate-200 dark:border-slate-800" title="Fonte padrão">A</button>
+            <button id="font-increase" class="px-1.5 py-0.5 text-[11px] font-bold text-slate-600 dark:text-slate-300 hover:text-rose-600 rounded" title="Aumentar fonte">A+</button>
+          </div>
+
+          <!-- Alternador de Tema -->
+          <button id="theme-toggle" class="p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Alternar Modo Escuro/Claro">
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Navegação Rápida com Rolagem Horizontal Suave -->
+    <div class="border-t border-slate-200/60 dark:border-slate-800/60 bg-white/70 dark:bg-slate-900/70">
+      <div class="w-full max-w-7xl mx-auto px-3 sm:px-6">
+        <nav class="flex items-center gap-2 py-2 overflow-x-auto no-scrollbar text-xs font-semibold whitespace-nowrap">
+          <a href="#bloco-a" class="px-2.5 py-1 rounded-full bg-rose-100/80 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200 hover:bg-rose-200 transition-colors">Bloco A: Oncologia Ginecológica</a>
+          <a href="#bloco-b" class="px-2.5 py-1 rounded-full bg-pink-100/80 dark:bg-pink-950/60 text-pink-800 dark:text-pink-200 hover:bg-pink-200 transition-colors">Bloco B: Mastologia</a>
+          <a href="#bloco-c" class="px-2.5 py-1 rounded-full bg-sky-100/80 dark:bg-sky-950/60 text-sky-800 dark:text-sky-200 hover:bg-sky-200 transition-colors">Bloco C: Cirurgia Ginecológica</a>
+          <a href="#ferramentas-clinicas" class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">Calculadoras Interativas</a>
+          <a href="#galeria-visual" class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">Galeria HD</a>
+          <a href="#casos-clinicos" class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">16 Casos Clínicos</a>
+          <a href="#flashcards" class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">Flashcards 3D</a>
+          <a href="#master-matrix" class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">Master Matrix</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       CONTEÚDO PRINCIPAL (100% RESPONSIVO, SEM OVERFLOW HORIZONTAL)
+       ====================================================================== -->
+  <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 space-y-12">
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-900 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 shadow-2xl border border-rose-800/40">
+      <div class="relative z-10 space-y-4 max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Guia Obstetrícia & Ginecologia • Parte 7
+        </div>
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          Oncologia Ginecológica, Mastologia & Cirurgia Perioperatória
+        </h1>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          Plataforma de alta precisão baseada em evidências internacionais e diretrizes brasileiras atualizadas: 
+          <strong>USPSTF 2024 / FEBRASGO vs MS/INCA (Rastreamento Mamário)</strong>, 
+          <strong>INCA 2024–2025 / Portaria GM/MS 820/2024 (DNA-HPV Primário)</strong>, 
+          <strong>FIGO 2023 (Classificação Molecular do Endométrio)</strong>, 
+          <strong>ABM 2022 / SBP 2023 (Mastite)</strong> e <strong>Protocolos ERAS / ACERTO 2023–2024</strong>.
+        </p>
+
+        <!-- Métricas Rápidas -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-center">
+            <span class="block text-2xl font-black text-rose-400">21</span>
+            <span class="text-[11px] font-semibold text-slate-300 uppercase">Módulos (61 a 81)</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-center">
+            <span class="block text-2xl font-black text-pink-400">13</span>
+            <span class="text-[11px] font-semibold text-slate-300 uppercase">Imagens & Infográficos</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-center">
+            <span class="block text-2xl font-black text-emerald-400">16</span>
+            <span class="text-[11px] font-semibold text-slate-300 uppercase">Casos USMLE Interativos</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-center">
+            <span class="block text-2xl font-black text-sky-400">4</span>
+            <span class="text-[11px] font-semibold text-slate-300 uppercase">Calculadoras Clínicas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOX DE DESTAQUE: VACINAÇÃO HPV (PNI BRASIL 2024 / NOTA TÉCNICA 41/2024 / OMS 2022) -->
+    <div class="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-sky-950/40 border border-emerald-500/30 text-xs sm:text-sm text-slate-200 space-y-3 shadow-lg">
+      <div class="flex items-center gap-2 text-emerald-400 font-extrabold text-sm uppercase tracking-wide">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        <span>Atualização Crítica PNI 2024: Novo Esquema de Vacinação contra o HPV no Brasil (Nota Técnica 41/2024-MS)</span>
+      </div>
+      <p class="leading-relaxed">
+        Seguindo a recomendação da OMS (2022) e a <strong>Nota Técnica nº 41/2024-DPNI/SVSA/MS</strong>, o Ministério da Saúde do Brasil adotou oficialmente o <strong>esquema de DOSE ÚNICA</strong> da vacina HPV quadrivalente:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1 text-xs">
+        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+          <span class="block font-bold text-emerald-400 mb-1">População Geral (9 a 14 anos)</span>
+          <span><strong>Dose Única</strong> para meninas e meninos de 9 a 14 anos (até 14 anos, 11 meses e 29 dias). Eficácia e imunogenicidade comprovadamente equivalentes aos regimes multidose.</span>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+          <span class="block font-bold text-sky-400 mb-1">Resgate de Não Vacinados (15 a 19 anos)</span>
+          <span>Jovens de 15 a 19 anos não vacinados na idade recomendada realizam esquema de <strong>2 doses</strong> (com intervalo de 0 e 6 meses).</span>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+          <span class="block font-bold text-purple-400 mb-1">Imunossuprimidos & Vítimas de Violência (9 a 45 anos)</span>
+          <span>Pacientes vivendo com HIV/AIDS, transplantados de órgãos sólidos/MO, pacientes oncológicos e vítimas de violência sexual: <strong>3 doses</strong> (intervalos 0, 2 e 6 meses).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENSAGEM SE A BUSCA NÃO ENCONTRAR RESULTADOS -->
+    <div id="no-search-results" class="hidden p-8 text-center glass-card">
+      <i data-lucide="search-x" class="w-10 h-10 text-slate-400 mx-auto mb-2"></i>
+      <h3 class="text-base font-bold text-slate-700 dark:text-slate-300">Nenhum módulo encontrado</h3>
+      <p class="text-xs text-slate-500">Tente buscar por termos como "BI-RADS", "HPV", "FIGO", "LACC", "Ureter", "Mama".</p>
+    </div>
+
+    <!-- ======================================================================
+         BLOCO A — ONCOLOGIA GINECOLÓGICA & RASTREAMENTO (MÓDULOS 61 A 69)
+         ====================================================================== -->
+    <section id="bloco-a" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-rose-200 dark:border-rose-900 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          A
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Bloco A: Oncologia Ginecológica & Rastreamento</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Módulos 61 ao 69 • Colo Uterino, Endométrio, Ovário, Vulva e Síndromes Hereditárias</p>
+        </div>
+      </div>
+
+      <!-- Módulos em Cards Expansíveis / Ricos -->
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- MÓDULO 61: HPV & ONCOGÊNESE MOLECULAR -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">Módulo 61</span>
+            <span class="text-xs text-slate-400 font-mono">ASCCP • WHO • Bethesda</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            HPV, Oncogênese Molecular (E6/p53, E7/Rb) e Zona de Transformação
+          </h3>
+
+          <!-- Analogia 5 Anos -->
+          <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/60">
+            <h4 class="text-xs font-extrabold uppercase tracking-wide text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-1">
+              🎈 Didática para Criança de 5 Anos: O Ladrão de Freios
+            </h4>
+            <p class="text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+              Toda célula é como um carrinho com dois freios: o freio <strong>p53</strong> ("pare e conserte o estrago!") e o freio <strong>Rb</strong> ("espere, ainda não é hora de se dividir!"). O HPV de alto risco é um <strong>ladrão de freios</strong>. A mãozinha <strong>E6</strong> rouba o p53, e a mãozinha <strong>E7</strong> rouba o Rb. Sem freios, o carrinho acelera descontrolado e bate: vira câncer! Como isso leva 10 a 20 anos, o exame preventivo acha o carrinho com defeito bem antes da batida!
+            </p>
+          </div>
+
+          <!-- Imagem Infográfica do HPV -->
+          <div class="my-4 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+            <img src="assets/img/hpv_oncogenese_molecular_e6_e7.jpg" alt="Infográfico da Oncogênese Molecular do HPV (E6/p53 e E7/Rb)" class="img-zoom-hover w-full" loading="lazy">
+            <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+              🔍 Toque na imagem para ampliar em alta definição
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+              <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-2">Mecanismo Molecular de Alta Complexidade (Ivy League)</h4>
+              <ul class="space-y-1.5 list-disc list-inside text-slate-700 dark:text-slate-300">
+                <li><strong>E6</strong>: liga-se à E6AP induzindo degradação de p53 no proteassoma; ativa hTERT.</li>
+                <li><strong>E7</strong>: liga-se a pRb e libera E2F; induz acúmulo de p16INK4a (marcador p16 em bloco).</li>
+                <li><strong>Integração</strong>: quebra do gene viral E2 desreprime a síntese de E6 e E7.</li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+              <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-2">Classificação Histológica (LAST / OMS)</h4>
+              <ul class="space-y-1.5 list-disc list-inside text-slate-700 dark:text-slate-300">
+                <li><strong>NIC 1 (LSIL)</strong>: terço inferior do epitélio; 60% regridem espontaneamente.</li>
+                <li><strong>NIC 2 (HSIL)</strong>: até dois terços; lesão precursora verdadeira se p16 positivo.</li>
+                <li><strong>NIC 3 (HSIL)</strong>: espessura total com membrana basal íntegra; risco invasor > 12%.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- MÓDULO 63 a 65: RASTREAMENTO, COLPOSCOPIA E CÂNCER DE COLO -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">Módulos 63 a 65</span>
+            <span class="text-xs text-slate-400 font-mono">INCA 2024-2025 • ASCCP • FIGO 2018</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Rastreamento, Colposcopia (IFCPC 2011) e Câncer Invasor de Colo Uterino
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Imagem Realista de Colposcopia -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/colposcopia_cervical_real.jpg" alt="Visão Colposcópica Realista com Epitélio Acetobranco e Vasos Atípicos" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                🔬 Fotografia Colposcópica de Alta Definição: Epitélio Acetobranco e Mosaico
+              </div>
+            </div>
+
+            <!-- Infográfico do Algoritmo de Rastreamento -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/algoritmo_rastreamento_colo_asccp_inca.jpg" alt="Algoritmo de Rastreamento do Colo do Útero INCA vs ASCCP" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                📊 Fluxograma Comparativo: Diretrizes INCA vs ASCCP 2019
+              </div>
+            </div>
+          </div>
+
+          <!-- Destaque do Ensaio LACC -->
+          <div class="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900">
+            <h4 class="text-xs font-extrabold uppercase tracking-wide text-rose-800 dark:text-rose-300 flex items-center gap-1.5 mb-1">
+              ⚠️ O Marco do Ensaio LACC (New England Journal of Medicine): Pegadinha Fatal
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+              O estudo randomizado <strong>LACC Trial</strong> revolucionou a oncoginecologia ao demonstrar que a cirurgia minimamente invasiva (laparoscópica ou robótica) para histerectomia radical em câncer de colo uterino esteve associada a <strong>pior sobrevida livre de progressão e maior mortalidade global</strong> em comparação com a cirurgia aberta por laparotomia. Portanto, em tumores ≥ IB1, a via aberta abdominal continua sendo o padrão-ouro!
+            </p>
+          </div>
+        </article>
+
+        <!-- MÓDULO 66: CÂNCER DE ENDOMÉTRIO & CLASSIFICAÇÃO MOLECULAR FIGO 2023 -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">Módulo 66</span>
+            <span class="text-xs text-slate-400 font-mono">FIGO 2023 • TCGA • Ensaios RUBY / NRG-GY018</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Câncer de Endométrio: Investigação e Nova Classificação Molecular FIGO 2023
+          </h3>
+
+          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+            <img src="assets/img/endometrio_classificacao_molecular_figo2023.jpg" alt="Infográfico dos 4 Subtipos Moleculares do Câncer de Endométrio FIGO 2023" class="img-zoom-hover w-full" loading="lazy">
+            <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+              🧬 Os 4 Subtipos Moleculares do TCGA integrados ao Estadiamento FIGO 2023
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm space-y-3">
+            <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200">
+              <span class="font-extrabold uppercase tracking-wide flex items-center gap-1.5 mb-1 text-xs">
+                ⚠️ Regra de Ouro no Sangramento Pós-Menopausa (SPM):
+              </span>
+              <p class="leading-relaxed">
+                Em vigência de sangramento pós-menopausa, <strong>qualquer espessura endometrial com sangramento ativo e persistente exige investigação histológica</strong>! 
+                O ponto de corte de <strong>4 mm</strong> na USG transvaginal (ou 8 mm sob terapia hormonal) define a necessidade imediata de biópsia. Em mulheres <em>assintomáticas</em> (achado radiológico incidental), espessuras de até 4 mm (ou 8-11 mm com THM) dispensam biópsia endometrial invasiva de rotina.
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white mb-1.5">Algoritmo Diagnóstico Sequencial Padrão:</p>
+              <ul class="space-y-1 list-disc list-inside text-slate-700 dark:text-slate-300">
+                <li><strong>1. Ultrassonografia Transvaginal (USTV)</strong>: Avaliação da espessura (dupla camada) e regularidade do eco endometrial.</li>
+                <li><strong>2. Biópsia Endometrial com Cânula de Pipelle</strong>: Padrão ambulatorial inicial de primeira escolha (sensibilidade > 95% para adenocarcinoma difuso, dispensa anestesia).</li>
+                <li><strong>3. Histeroscopia Diagnóstica com Biópsia Dirigida</strong>: Padrão-ouro quando o Pipelle for insuficiente/inconclusivo, na suspeita de lesões focais/pólipos ou quando o sangramento persistir apesar de biópsia negativa.</li>
+              </ul>
+            </div>
+
+            <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
+              <p class="font-bold text-purple-700 dark:text-purple-300 mb-1.5">Hierarquia Molecular Estrita FIGO 2023 (TCGA):</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                  <span class="font-bold text-emerald-700 dark:text-emerald-300 block">1. POLEmut (Ultramutado)</span>
+                  <span class="text-slate-700 dark:text-slate-300">Excelente prognóstico (SG > 95%). Permite <strong>de-escalonamento terapêutico</strong> (dispensa QT/RT em I-II). Sufixo: <em>Stage IA1 POLEmut</em>.</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800">
+                  <span class="font-bold text-sky-700 dark:text-sky-300 block">2. MMRd / MSI-H (Hipermutado)</span>
+                  <span class="text-slate-700 dark:text-slate-300">Prognóstico intermediário. <strong>Alta sensibilidade a imunoterapia anti-PD-1</strong> (Dostarlimabe / RUBY ou Pembrolizumabe / NRG-GY018). Rastrear Sd. de Lynch.</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800">
+                  <span class="font-bold text-amber-700 dark:text-amber-300 block">3. NSMP (Sem Perfil Específico)</span>
+                  <span class="text-slate-700 dark:text-slate-300">Prognóstico intermediário. Conduta guiada por grau histológico, invasão miometrial (≥50%) e invasão linfovascular (LVSI). Expressa ER/PR.</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
+                  <span class="font-bold text-rose-700 dark:text-rose-300 block">4. p53abn (Copy-Number High)</span>
+                  <span class="text-slate-700 dark:text-slate-300">Pior prognóstico, alta recorrência precoce. <strong>Quimioterapia agressiva obrigatória</strong> (Carboplatina + Paclitaxel). Sobe de estádio (IIC+). Sufixo: <em>Stage IB1 p53abn</em>.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         BLOCO B — MASTOLOGIA (MÓDULOS 70 A 74)
+         ====================================================================== -->
+    <section id="bloco-b" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-pink-200 dark:border-pink-900 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-pink-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          B
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Bloco B: Mastologia</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Módulos 70 ao 74 • Anatomia, BI-RADS 6ª Edição, Nódulos, Mastite e Câncer de Mama</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- MÓDULO 70 & 71: ANATOMIA E BI-RADS -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-pink-100 text-pink-800 dark:bg-pink-950 dark:text-pink-300">Módulos 70 e 71</span>
+            <span class="text-xs text-slate-400 font-mono">USPSTF 2024 • ACR BI-RADS 6ª Edição</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Anatomia Mamária, Níveis de Berg e Rastreamento pelo Sistema BI-RADS
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Imagem 3D Anatômica da Mama -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/anatomia_mama_axila_real.jpg" alt="Render 3D Anatômico da Mama e Níveis Axilares de Berg" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                🩺 Anatomia Cirúrgica e Linfonodos de Berg (Níveis I, II e III)
+              </div>
+            </div>
+
+            <!-- Mamografia BI-RADS 5 vs Normal -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/mamografia_birads_real.jpg" alt="Mamografia Digital Comparativa: Mama Normal vs Carcinoma Espiculado BI-RADS 5" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                ☢️ Mamografia Diagnóstica: Normal (Esq) vs BI-RADS 5 Espiculado (Dir)
+              </div>
+            </div>
+          </div>
+
+          <!-- Infográfico Completo BI-RADS -->
+          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
+            <img src="assets/img/birads_classificacao_condutas.jpg" alt="Infográfico Completo das Categorias BI-RADS 0 a 6 e Condutas" class="img-zoom-hover w-full" loading="lazy">
+            <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+              📋 Tabela de Decisão do ACR BI-RADS 6ª Edição
+            </div>
+          </div>
+
+          <!-- Destaque: Divergência de Diretrizes de Rastreamento Mamário -->
+          <div class="p-4 rounded-2xl bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-900 text-xs sm:text-sm space-y-2">
+            <h4 class="font-bold text-pink-800 dark:text-pink-300 flex items-center gap-1.5">
+              <i data-lucide="scale" class="w-4 h-4"></i>
+              Divergência Crucial em Provas: Rastreamento Mamográfico em Risco Habitual
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="font-bold text-pink-700 dark:text-pink-300 block mb-1">🇺🇸 USPSTF 2024 (Novo)</span>
+                <span class="text-slate-700 dark:text-slate-300">Mamografia <strong>bienal dos 40 aos 74 anos</strong>. Mudança da recomendação histórica (redução de 1,3 mortes/1.000 rastreadas).</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="font-bold text-emerald-700 dark:text-emerald-300 block mb-1">🇧🇷 MS / INCA (SUS)</span>
+                <span class="text-slate-700 dark:text-slate-300">Mamografia <strong>bienal dos 50 aos 69 anos</strong>. Foco em balanço custo-efetividade e minimização de sobrediagnóstico no SUS.</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">🇧🇷 FEBRASGO / CBR / SBM</span>
+                <span class="text-slate-700 dark:text-slate-300">Mamografia <strong>anual a partir dos 40 anos</strong> até enquanto a paciente mantiver expectativa de vida &gt; 10 anos.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MÓDULO 73 & 74: MASTITE (ABM 2022 / SBP 2023) E CÂNCER MOLECULAR (Z0011 / AMAROS) -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">Módulos 73 e 74</span>
+            <span class="text-xs text-slate-400 font-mono">ABM 36 • SBP/MS 2023 • ACOSOG Z0011 • AMAROS</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Mastite e Abscesso (Protocolo ABM 2022 / SBP 2023) & Subtipos Moleculares e Manejo Axilar
+          </h3>
+
+          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+            <img src="assets/img/cancer_mama_subtipos_moleculares.jpg" alt="Infográfico dos Subtipos Moleculares do Câncer de Mama e Ensaio Z0011" class="img-zoom-hover w-full" loading="lazy">
+            <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+              🎯 Luminal A, Luminal B, HER2+ e Triplo-Negativo com Imunoterapia
+            </div>
+          </div>
+
+          <!-- Manejo Axilar Poupador: Z0011 + AMAROS + ALLIANCE -->
+          <div class="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900 text-xs sm:text-sm space-y-1.5">
+            <h4 class="font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-1.5">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+              De-escalonamento Cirúrgico Axilar: Ensaios Z0011, AMAROS e ALLIANCE A011202
+            </h4>
+            <p class="text-slate-800 dark:text-slate-200 leading-relaxed">
+              Em mulheres com câncer de mama T1-T2 cN0 submetidas a cirurgia conservadora da mama (setorectomia) e radioterapia total de mama com <strong>1 a 2 linfonodos sentinela positivos (SLN+)</strong>, o esvaziamento axilar radical (linfadenectomia níveis I e II) <strong>NÃO melhora a sobrevida global nem a sobrevida livre de doença</strong> em comparação com a radioterapia isolada (ensaios <strong>ACOSOG Z0011</strong> e <strong>AMAROS</strong>). A abordagem poupadora reduz drasticamente a taxa de linfedema de membro superior (de ~25% para < 5%).
+            </p>
+          </div>
+
+          <!-- Mastite Puerperal SBP/MS 2023 e ABM 2022 -->
+          <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 text-xs sm:text-sm leading-relaxed space-y-2">
+            <h4 class="font-bold text-amber-800 dark:text-amber-400">Novo Paradigma da Mastite (Protocolo 36 da ABM 2022 & Guia SBP/MS 2023):</h4>
+            <p class="text-slate-800 dark:text-slate-200">
+              A mastite puerperal é um <strong>espectro inflamatório contínuo</strong> (inicia com estase láctea e edema ductal, evoluindo para inflamação e supercrescimento bacteriano).<br>
+              🚫 <strong>CONTRAINDICAÇÃO FORMAL:</strong> NUNCA realizar massagens vigorosas, desempedramento violento ou <strong>uso de bombas mecânicas de extração láctea nas primeiras 24 a 48 horas</strong> da fase aguda! A pressão de sucção mecânica e a fricção causam microtrauma tecidual, pioram o edema intersticial e exacerbam a resposta inflamatória.<br>
+              ✅ <strong>CONDUTA DE ESCOLHA:</strong> Alívio manual suave da pressão areolar (técnica de Cotterman / pressão retrógrada) para facilitar a pega, compressas frias locais (gelo envolvido em pano), anti-inflamatórios (ibuprofeno), analgesia e manutenção rigorosa da amamentação sob livre demanda. Se houver febre persistente após 24-48h ou piora clínica: Cefalexina 500mg 6/6h VO por 10-14 dias. Abscessos devem ser drenados preferencialmente por <strong>aspiração por agulha guiada por ultrassonografia</strong>.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         BLOCO C — CIRURGIA GINECOLÓGICA & PERIOPERATÓRIO (MÓDULOS 75 A 78)
+         ====================================================================== -->
+    <section id="bloco-c" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-sky-200 dark:border-sky-900 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          C
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Bloco C: Cirurgia Ginecológica & Perioperatório</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Módulos 75 ao 78 • Histerectomia, Anatomia do Ureter, Laparoscopia, Histeroscopia e ERAS</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- ANATOMIA CIRÚRGICA PÉLVICA: WATER UNDER THE BRIDGE & SALPINGECTOMIA OPORTUNISTA -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">Módulo 75</span>
+            <span class="text-xs text-slate-400 font-mono">ACOG • FEBRASGO • Cirurgia Pélvica</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Vias de Histerectomia, Anatomia do Ureter ("Water Under the Bridge") e Salpingectomia Oportunista
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Imagem Cirúrgica Realista de Dissecção Pélvica -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/cirurgia_pelvica_ureter_real.jpg" alt="Campo Cirúrgico Realista Mostrando o Ureter Cruzando sob a Artéria Uterina" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                🩸 Dissecção Cirúrgica Real: Ureter Passando sob a Artéria Uterina
+              </div>
+            </div>
+
+            <!-- Infográfico das Vias e Anatomia -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/vias_histerectomia_anatomia_cirurgica.jpg" alt="Infográfico da Hierarquia ACOG de Vias de Histerectomia e Relações Anatômicas" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                📐 Hierarquia ACOG: Vaginal > Laparoscópica > Abdominal Aberta
+              </div>
+            </div>
+          </div>
+
+          <!-- Box Salpingectomia Oportunista Bilateral -->
+          <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-800 text-xs sm:text-sm space-y-1.5">
+            <h4 class="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+              <i data-lucide="scissors" class="w-4 h-4"></i>
+              Prevenção Oncológica: Salpingectomia Oportunista Bilateral (SOB)
+            </h4>
+            <p class="text-slate-800 dark:text-slate-200 leading-relaxed">
+              Evidências histopatológicas e genéticas demonstraram que a vasta maioria dos carcinomas serosos de alto grau do ovário origina-se no epitélio da fímbria tubária (lesão precursora STIC – <em>Serous Tubal Intraepithelial Carcinoma</em>). A realização de <strong>Salpingectomia Bilateral Oportunista</strong> (com preservação dos ovários) durante cirurgias ginecológicas por doença benigna (histerectomias, esterilização tubária) <strong>reduz o risco relativo de câncer epitelial de ovário em 40% a 65%</strong>, sem antecipar a idade da menopausa nem comprometer a reserva ovariana (ACOG Comitê Opinion 774 / FEBRASGO).
+            </p>
+          </div>
+        </article>
+
+        <!-- LAPAROSCOPIA & HISTEROSCOPIA COM MEIOS DE DISTENSÃO -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Módulo 76</span>
+            <span class="text-xs text-slate-400 font-mono">Vídeo-Cirurgia Ginecológica</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Cirurgia Minimamente Invasiva: Visão Endoscópica, Meios de Distensão e Asherman
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Imagem Realista de Laparoscopia -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/laparoscopia_pelvica_real.jpg" alt="Visão Laparoscópica em Alta Definição da Cavidade Pélvica com Útero e Ovários" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                🎥 Laparoscopia Pélvica: Pneumoperitônio CO2 (12-15 mmHg) e Trendelenburg
+              </div>
+            </div>
+
+            <!-- Imagem Realista de Histeroscopia com Mioma FIGO 1 -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+              <img src="assets/img/histeroscopia_patologia_real.jpg" alt="Visão Histeroscópica Endoscópica de Mioma Submucoso FIGO 1" class="img-zoom-hover w-full" loading="lazy">
+              <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                🔍 Histeroscopia Cirúrgica: Mioma FIGO 1 e Óstios Tubários Bilaterais
+              </div>
+            </div>
+          </div>
+
+          <!-- Perigo da Glicina e Limites Estritos de Correção de Sódio -->
+          <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 text-xs sm:text-sm space-y-2">
+            <span class="font-extrabold text-purple-700 dark:text-purple-300 uppercase tracking-wide flex items-center gap-1.5">
+              <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+              Intoxicação Hídrica por Glicina a 1,5% e Limites Estritos de Correção do Sódio:
+            </span>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+              A absorção de > 1.000 mL de meio de distensão hipotônico não condutor (glicina/sorbitol) provoca <strong>hiponatremia hiposmolar aguda grave (&lt; 120 mEq/L) com edema cerebral e convulsão</strong>.<br>
+              🚨 <strong>Protocolo de Correção com NaCl 3%:</strong> Em caso de sintomas neurológicos graves, infundir NaCl 3% elevando o sódio em <strong>4 a 6 mEq/L nas primeiras 6 horas</strong>, com <strong>limite máximo de 8 mEq/L nas primeiras 24 horas (máximo absoluto de 10 a 12 mEq/L em 24h)</strong>! A correção excessivamente rápida causa <strong>Síndrome de Desmielinização Osmótica (Mielinólise Pontina Central)</strong> com paralisia pseudobulbar irreversível. Se ultrapassar a meta horária, infundir Dextrose a 5% (SG 5%) e considerar Desmopressina (DDAVP) para frear a ascensão natrêmica.
+            </p>
+            <div class="pt-2 border-t border-purple-200 dark:border-purple-800 text-slate-700 dark:text-slate-300">
+              <strong>Síndrome de Asherman:</strong> Diagnóstico e tratamento padrão-ouro por <strong>histeroscopia cirúrgica com lise de sinéquias a frio</strong> (evitando energia térmica), seguida de corticoterapia ou estrogênio em altas doses e colocação de sonda/DIU de cobre intrauterino para prevenir sinéquias de contato recorrentes.
+            </div>
+          </div>
+        </article>
+
+        <!-- COMPLICAÇÕES CIRÚRGICAS & ERAS / ACERTO -->
+        <article class="module-card glass-card p-5 sm:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">Módulos 77 e 78</span>
+            <span class="text-xs text-slate-400 font-mono">ERAS Society • ACERTO 2023 • Escore de Caprini</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+            Complicações Urológicas, Profilaxia Antibiótica e Otimização Perioperatória (ERAS / ACERTO)
+          </h3>
+
+          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+            <img src="assets/img/complicacoes_cirurgicas_urologicas_eras.jpg" alt="Infográfico das Complicações Cirúrgicas Urológicas e Princípios ERAS" class="img-zoom-hover w-full" loading="lazy">
+            <div class="p-2.5 bg-slate-100 dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+              🏥 Lesões Urológicas, Febre dos 5 W's e Otimização Perioperatória ERAS
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <!-- Box Antibioprofilaxia Cirúrgica -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-1.5">
+              <h4 class="font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+                <i data-lucide="pill" class="w-4 h-4"></i>
+                Profilaxia Antibiótica Cirúrgica (Doses Reais)
+              </h4>
+              <ul class="space-y-1 list-disc list-inside text-slate-700 dark:text-slate-300">
+                <li><strong>Cefazolina 2g EV</strong> (ou <strong>3g se peso ≥ 120 kg</strong>), administrada nos <strong>60 minutos pré-incisão</strong> da pele.</li>
+                <li><strong>Repique intraoperatório:</strong> 1g a cada <strong>4 horas</strong> de cirurgia ou se hemorragia &gt; 1.500 mL.</li>
+                <li><strong>Cirurgias contaminadas/colorretal associada:</strong> associar Metronidazol 500 mg EV dose única.</li>
+              </ul>
+            </div>
+
+            <!-- Box Janela Ureteral Crítica -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-1.5">
+              <h4 class="font-bold text-sky-600 dark:text-sky-400 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+                Janela Terapêutica da Lesão Ureteral
+              </h4>
+              <ul class="space-y-1 list-disc list-inside text-slate-700 dark:text-slate-300">
+                <li><strong>Intraoperatório:</strong> Reparo imediato sobre cateter duplo J (reimplante com ureteroneocistostomia se distal).</li>
+                <li><strong>≤ 72 horas pós-op:</strong> Tentativa imediata de passagem de cateter duplo J por via retrógrada (cistoscopia).</li>
+                <li><strong>&gt; 72 horas pós-op / sepse:</strong> <strong>Nefrostomia Percutânea</strong> de urgência + cirurgia reconstrutiva definitiva tardia eletiva após <strong>6 a 12 semanas</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pilares Práticos ERAS / ACERTO 2023 -->
+          <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-xs sm:text-sm space-y-2">
+            <h4 class="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+              <i data-lucide="activity" class="w-4 h-4"></i>
+              Pilares Práticos de Aceleração da Recuperação Cirúrgica (ERAS / ACERTO 2023–2024):
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>1. Jejum Abreviado:</strong> Líquidos claros com carboidratos (maltodextrina 12,5%) até 2h pré-anestesia.
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>2. Euvolemia Guiada:</strong> Restrição hídrica venosa para evitar sobrecarga cristalóide e edema de alças.
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>3. Poupança de Opioides:</strong> Analgesia multimodal (infiltração de parede, dipirona/paracetamol, AINEs).
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>4. Realimentação Precoce:</strong> Dieta líquida/pastosa em até 4 horas pós-operatórias.
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>5. Deambulação em ≤ 6h:</strong> Mobilização precoce no mesmo dia da cirurgia para prevenir íleo e TEV.
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>6. TEV Estendido (28 a 35 dias):</strong> Enoxaparina 40mg SC mantida por 28 a 35 dias após a alta em oncologia ginecológica.
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CALCULADORAS & FERRAMENTAS CLÍNICAS INTERATIVAS
+         ====================================================================== -->
+    <section id="ferramentas-clinicas" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Calculadoras Clínicas Interativas</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Ferramentas de Decisão Rápida para Ambulatório e Pronto-Socorro</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- 1. Calculadora BI-RADS -->
+        <div class="glass-card p-5 space-y-3">
+          <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold text-sm">
+            <i data-lucide="scan" class="w-4 h-4"></i>
+            <h3>Classificador BI-RADS</h3>
+          </div>
+          <p class="text-xs text-slate-500">Selecione o achado radiológico para calcular a categoria oficial e a conduta recomendada:</p>
+          <select id="calc-birads-finding" class="w-full p-2.5 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200">
+            <option value="">Selecione o achado...</option>
+            <option value="incompleto">Mama densa sem comparação prévia (Incompleto)</option>
+            <option value="cisto_simples">Cisto simples anecoico com reforço acústico posterior</option>
+            <option value="fibroadenoma_estavel">Nódulo circunscrito oval calcificado ("pipoca") estável há 3 anos</option>
+            <option value="nodulo_circunscrito_novo">Nódulo circunscrito oval palpável novo em paciente de 35 anos</option>
+            <option value="nodulo_indistinto">Massa oval com margens indistintas ou microlobuladas</option>
+            <option value="massa_espiculada">Massa de alta densidade espiculada e contornos irregulares</option>
+            <option value="calcificacoes_pleomorficas">Microcalcificações pleomórficas agrupadas ramificadas</option>
+          </select>
+          <div id="calc-birads-result"></div>
+        </div>
+
+        <!-- 2. Simulador Rastreamento Colo -->
+        <div class="glass-card p-5 space-y-3">
+          <div class="flex items-center gap-2 text-sky-600 dark:text-sky-400 font-bold text-sm">
+            <i data-lucide="dna" class="w-4 h-4"></i>
+            <h3>Simulador de Colo Uterino</h3>
+          </div>
+          <p class="text-xs text-slate-500">Compare condutas em tempo real (INCA 2024-2025 vs ASCCP 2019):</p>
+          <div class="space-y-2">
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Idade da Paciente:</label>
+              <input type="number" id="sim-colo-age" value="32" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Resultado Citológico:</label>
+              <select id="sim-colo-cito" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <option value="nilm">NILM (Negativo)</option>
+                <option value="asc-us" selected>ASC-US (Atipias de Significado Indeterminado)</option>
+                <option value="lsil">LSIL (Baixo Grau)</option>
+                <option value="asc-h">ASC-H (Não afasta alto grau)</option>
+                <option value="hsil">HSIL (Alto Grau)</option>
+                <option value="agc">AGC (Células Glandulares Atípicas)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Teste de DNA-HPV:</label>
+              <select id="sim-colo-hpv" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <option value="negativo">Negativo para alto risco</option>
+                <option value="16_18">Positivo para HPV 16 ou 18</option>
+                <option value="outro_alto">Positivo para outros 12 tipos oncogênicos</option>
+              </select>
+            </div>
+            <button id="btn-sim-colo" class="w-full py-2 rounded-xl text-xs font-bold text-white bg-sky-600 hover:bg-sky-700 transition-colors">
+              Calcular Condutas Simultâneas
+            </button>
+          </div>
+          <div id="sim-colo-result"></div>
+        </div>
+
+        <!-- 3. Classificador Molecular Endométrio FIGO 2023 -->
+        <div class="glass-card p-5 space-y-3">
+          <div class="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-bold text-sm">
+            <i data-lucide="git-branch" class="w-4 h-4"></i>
+            <h3>Molecular FIGO 2023 Endométrio</h3>
+          </div>
+          <p class="text-xs text-slate-500">Estratificação prognóstica e indicação de Imunoterapia:</p>
+          <div class="space-y-2">
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Mutação do gene POLE:</label>
+              <select id="endo-pole" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <option value="selvagem">Selvagem (Sem mutação)</option>
+                <option value="mutado">Mutado no domínio exonuclease</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Proteínas de Reparo (MMR):</label>
+              <select id="endo-mmr" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <option value="preservado">Preservadas (Proficiente)</option>
+                <option value="deficiente">Perda de expressão (Deficiente / MSI-H)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Status da proteína p53:</label>
+              <select id="endo-p53" class="w-full p-2 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <option value="normal">Normal / Selvagem</option>
+                <option value="anomalo">Anômalo (Superexpressão forte ou nulo)</option>
+              </select>
+            </div>
+            <button id="btn-calc-endo" class="w-full py-2 rounded-xl text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors">
+              Estratificar Molecularmente
+            </button>
+          </div>
+          <div id="endo-result"></div>
+        </div>
+
+        <!-- 4. Calculadora Escore de Caprini (TEV) & ACERTO/ERAS -->
+        <div class="glass-card p-5 space-y-3">
+          <div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-bold text-sm">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+            <h3>Escore de Caprini & TEV</h3>
+          </div>
+          <p class="text-xs text-slate-500">Fatores de risco cirúrgico para estratificar profilaxia de TEV:</p>
+          <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 max-h-48 overflow-y-auto p-1.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/50">
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="1">
+              <span>Idade 41-60 anos (+1 pt)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="1">
+              <span>Cirurgia menor &lt; 45 min (+1 pt)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="1">
+              <span>IMC &gt; 25 kg/m² (+1 pt)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="2">
+              <span>Idade 61-74 anos (+2 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="2">
+              <span>Laparoscopia &gt; 45min ou aberta (+2 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="2">
+              <span>Neoplasia maligna ativa ou prévia (+2 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="3">
+              <span>Idade &ge; 75 anos (+3 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="3">
+              <span>História prévia de TVP / TEP (+3 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="3">
+              <span>Trombofilia adquirida/congênita (+3 pts)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-200/50 dark:hover:bg-slate-800/50 p-1 rounded">
+              <input type="checkbox" class="caprini-chk rounded text-orange-600" value="5">
+              <span>Laparotomia oncológica de grande porte (+5 pts)</span>
+            </label>
+          </div>
+          <button id="btn-calc-caprini" class="w-full py-2 rounded-xl text-xs font-bold text-white bg-orange-600 hover:bg-orange-700 transition-colors">
+            Calcular Risco de TEV e Conduta
+          </button>
+          <div id="caprini-result"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         GALERIA VISUAL DE ALTA RESOLUÇÃO (13 IMAGENS E INFOGRÁFICOS)
+         ====================================================================== -->
+    <section id="galeria-visual" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-purple-200 dark:border-purple-900 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          <i data-lucide="images" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Galeria Visual de Alta Definição</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Imagens Cirúrgicas Ultra-Realistas e Infográficos Médicos Exclusivos</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <!-- 1. Colposcopia -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/colposcopia_cervical_real.jpg" alt="Colposcopia Cervical em Alta Definição" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Colposcopia Cervical</h4>
+            <p class="text-[11px] text-slate-500">Epitélio acetobranco e pontilhado vascular</p>
+          </div>
+        </div>
+
+        <!-- 2. Anatomia Mama -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/anatomia_mama_axila_real.jpg" alt="Anatomia da Mama e Drenagem Axilar" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Anatomia Mamária 3D</h4>
+            <p class="text-[11px] text-slate-500">Unidade ductolobular e 3 Níveis de Berg</p>
+          </div>
+        </div>
+
+        <!-- 3. Cirurgia Ureter -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/cirurgia_pelvica_ureter_real.jpg" alt="Campo Cirúrgico Ureter e Artéria Uterina" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Cirurgia Pélvica Profunda</h4>
+            <p class="text-[11px] text-slate-500">Ureter passando sob a artéria uterina</p>
+          </div>
+        </div>
+
+        <!-- 4. Laparoscopia -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/laparoscopia_pelvica_real.jpg" alt="Laparoscopia Ginecológica Pélvica" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Laparoscopia Ginecológica</h4>
+            <p class="text-[11px] text-slate-500">Útero, anexos e pneumoperitônio CO2</p>
+          </div>
+        </div>
+
+        <!-- 5. Mamografia BI-RADS -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/mamografia_birads_real.jpg" alt="Mamografia Digital Comparativa" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Mamografia Diagnóstica</h4>
+            <p class="text-[11px] text-slate-500">Parenquima normal vs BI-RADS 5 espiculado</p>
+          </div>
+        </div>
+
+        <!-- 6. Histeroscopia -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/histeroscopia_patologia_real.jpg" alt="Histeroscopia com Mioma FIGO 1" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Histeroscopia Endoscópica</h4>
+            <p class="text-[11px] text-slate-500">Mioma FIGO 1 e óstios tubários</p>
+          </div>
+        </div>
+
+        <!-- 7. Infográfico HPV -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/hpv_oncogenese_molecular_e6_e7.jpg" alt="Infográfico Oncogênese HPV" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Infográfico: HPV Molecular</h4>
+            <p class="text-[11px] text-slate-500">E6/p53, E7/Rb e superexpressão p16</p>
+          </div>
+        </div>
+
+        <!-- 8. Infográfico BI-RADS -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/birads_classificacao_condutas.jpg" alt="Infográfico Sistema BI-RADS 6ª Ed" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Infográfico: BI-RADS Completo</h4>
+            <p class="text-[11px] text-slate-500">Categorias 0 a 6 e condutas padronizadas</p>
+          </div>
+        </div>
+
+        <!-- 9. Infográfico Mama Molecular -->
+        <div class="glass-card overflow-hidden group">
+          <img src="assets/img/cancer_mama_subtipos_moleculares.jpg" alt="Infográfico Mama Molecular" class="img-zoom-hover w-full h-48 object-cover" loading="lazy">
+          <div class="p-3">
+            <h4 class="text-xs font-bold text-slate-900 dark:text-white">Infográfico: Câncer de Mama</h4>
+            <p class="text-[11px] text-slate-500">Subtipos Luminais, HER2 e Triplo-Negativo</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CENTRAL DE CASOS CLÍNICOS INTERATIVOS (16 CASOS USMLE STEP 2 CK / 3)
+         ====================================================================== -->
+    <section id="casos-clinicos" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-emerald-200 dark:border-emerald-900 pb-3 flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+            <i data-lucide="check-square" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">16 Casos Clínicos Interativos</h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Padrão USMLE Step 2 CK & Step 3 com Feedback Imediato</p>
+          </div>
+        </div>
+
+        <!-- Placar Dinâmico -->
+        <div class="flex items-center gap-3 p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-xs">
+          <div>Respondidos: <span id="score-respondidos" class="font-bold text-slate-900 dark:text-white">0</span>/16</div>
+          <div class="h-4 w-px bg-slate-300 dark:bg-slate-700"></div>
+          <div>Acertos: <span id="score-acertos" class="font-bold text-emerald-600">0</span></div>
+          <div class="h-4 w-px bg-slate-300 dark:bg-slate-700"></div>
+          <div>Aproveitamento: <span id="score-pct" class="font-bold text-indigo-600">0%</span></div>
+        </div>
+      </div>
+
+      <!-- Container onde o JavaScript injeta os 16 casos -->
+      <div id="casos-clinicos-container" class="space-y-4"></div>
+    </section>
+
+    <!-- ======================================================================
+         FLASHCARDS INTERATIVOS 3D
+         ====================================================================== -->
+    <section id="flashcards" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-indigo-200 dark:border-indigo-900 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          <i data-lucide="repeat" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Flashcards High-Yield</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Revisão Rápida dos Conceitos Mais Cobrados em Exames de Ivy League</p>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto space-y-4">
+        <div id="flashcard-container" class="flashcard"></div>
+
+        <div class="flex items-center justify-between">
+          <button id="card-prev" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition-colors flex items-center gap-1.5">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i> Anterior
+          </button>
+          <span id="card-counter" class="text-xs font-mono font-bold text-slate-500">1 de 8</span>
+          <button id="card-next" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition-colors flex items-center gap-1.5">
+            Próximo <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         HIGH-YIELD MASTER MATRIX (MÓDULO 79)
+         ====================================================================== -->
+    <section id="master-matrix" class="space-y-6">
+      <div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          <i data-lucide="table" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">High-Yield Master Matrix (Módulo 79)</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Tabela de Fixação Sinóptica Cruzando Clínica, Diagnóstico e Condutas</p>
+        </div>
+      </div>
+
+      <div class="table-responsive-container">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-900 text-white">
+              <th class="p-3 font-bold border-b border-slate-800">Patologia</th>
+              <th class="p-3 font-bold border-b border-slate-800">Apresentação Clássica</th>
+              <th class="p-3 font-bold border-b border-slate-800">Padrão-Ouro Diagnóstico</th>
+              <th class="p-3 font-bold border-b border-slate-800">Tratamento de Escolha</th>
+              <th class="p-3 font-bold border-b border-slate-800">Pegadinha do USMLE / Prova</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Câncer de Colo Uterino</td>
+              <td class="p-3">Sinusorragia + lesão vegetante friável</td>
+              <td class="p-3">Biópsia dirigida</td>
+              <td class="p-3">Histerectomia radical aberta (Wertheim-Meigs) ou QuimioRT definitiva</td>
+              <td class="p-3 text-rose-600 dark:text-rose-400 font-semibold">Ensaio LACC: cirurgia aberta abdominal é mandatória em tumores ≥ IB1!</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Câncer de Endométrio</td>
+              <td class="p-3">Sangramento pós-menopausa (eco endometrial qualquer espessura se sintomática; >4mm sem THM)</td>
+              <td class="p-3">Biópsia endometrial (Pipelle / Histeroscopia com biópsia dirigida)</td>
+              <td class="p-3">HTA + SOB + Linfonodo Sentinela (SLN)</td>
+              <td class="p-3 text-purple-600 dark:text-purple-400 font-semibold">FIGO 2023: POLEmut tem excelente prognóstico; MMRd responde a Imunoterapia (Dostarlimabe/Pembro); p53abn exige QT agressiva.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Câncer de Ovário</td>
+              <td class="p-3">Idosa + distensão abdominal + ascite + CA-125 elevado</td>
+              <td class="p-3">Estadiamento cirúrgico laparotômico (Punção contraindicada se ressecável; permitida apenas se irressecável para neoadjuvância)</td>
+              <td class="p-3">Cirurgia citorredutora R0 + Platina + Taxano + Inibidor de PARP se BRCAmut</td>
+              <td class="p-3 text-amber-600 dark:text-amber-400 font-semibold">Não puncionar massa suspeita! Salpingectomia oportunista bilateral em cirurgias benignas reduz risco em 40-65%!</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Carcinoma Ductal de Mama</td>
+              <td class="p-3">Nódulo espiculado aderido + microcalcificações pleomórficas</td>
+              <td class="p-3">Core Biopsy (biópsia por agulha grossa) / Mamotomia</td>
+              <td class="p-3">Cirurgia conservadora + RT total + Terapia Sistêmica por subtipo</td>
+              <td class="p-3 text-emerald-600 dark:text-emerald-400 font-semibold">Z0011 + AMAROS + ALLIANCE: RT axilar substitui esvaziamento se cirurgia conservadora e 1-2 sentinelas positivos!</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Câncer de Vulva (CEC)</td>
+              <td class="p-3">Prurido vulvar crônico de longa data + lesão ulcerada / vegetante</td>
+              <td class="p-3">Biópsia incisional de vulva (Punch de 4-5 mm)</td>
+              <td class="p-3">Vulvectomia radical ampla (margem 1 cm) + Pesquisa de Linfonodo Sentinela (SLN)</td>
+              <td class="p-3 text-pink-600 dark:text-pink-400 font-semibold">Ensaio GROINSS-V II: SLN poupa esvaziamento inguinofemoral bilateral em lesões unifocais < 4 cm N0!</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900 dark:text-white">Lesão Ureteral Cirúrgica</td>
+              <td class="p-3">Febre + dor em flanco + urinoma no 3º-5º DPO</td>
+              <td class="p-3">Urotomografia excretora com contraste tardio (> 15 min)</td>
+              <td class="p-3">Intraop: reparo imediato. ≤ 72h pós-op: Duplo J retrógrado. &gt; 72h pós-op: Nefrostomia percutânea + reparo tardio 6-12 sem</td>
+              <td class="p-3 text-sky-600 dark:text-sky-400 font-semibold">Ureter passa SOB a artéria uterina ("Water under the bridge").</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       MODAL DE IMAGEM FULLSCREEN LIGHTBOX
+       ====================================================================== -->
+  <div id="image-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md hidden">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="modal-close" class="absolute -top-10 right-0 text-white hover:text-rose-400 transition-colors p-2 text-sm font-bold flex items-center gap-1">
+        <i data-lucide="x" class="w-5 h-5"></i> Fechar (Esc)
+      </button>
+      <img id="modal-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/10">
+      <p id="modal-caption" class="text-xs sm:text-sm text-slate-300 font-semibold mt-3 text-center px-4"></p>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       RODAPÉ INFORMATIVO
+       ====================================================================== -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 mt-12 transition-colors">
+    <div class="w-full max-w-7xl mx-auto px-4 text-center space-y-3">
+      <div class="flex items-center justify-center gap-2 text-rose-600 font-black tracking-tight text-sm">
+        <i data-lucide="stethoscope" class="w-4 h-4"></i>
+        <span>INTERNATO GO • GUIA COMPLETO PARTE 7</span>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+        Material médico de excelência para USMLE Step 2 CK/CS/Step 3, Revalida e Residência Médica. 
+        Desenvolvido com diretrizes FEBRASGO, INCA 2024–2025, USPSTF 2024, FIGO 2023 e ACOG.
+      </p>
+      <p class="text-[11px] text-slate-400 font-mono">Deploy via GitHub Pages • 100% Responsivo e Fluido</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/app.js"></script>
+
+  <!-- Botão Flutuante de Retorno ao Hub Master (8 Portais) -->
+  <a href="../index.html" class="fab-hub-master" title="Voltar ao Dashboard Central (8 Portais)" 
+     style="position:fixed;bottom:1.25rem;left:1.25rem;z-index:45;display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 0.95rem;border-radius:9999px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;text-decoration:none;box-shadow:0 10px 25px -5px rgba(79,70,229,0.45);border:1px solid rgba(255,255,255,0.25);transition:transform 0.2s ease,box-shadow 0.2s ease;"
+     onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+    <span>🏠 Hub Central (8 Portais)</span>
+  </a>
+
+</body>
+</html>
