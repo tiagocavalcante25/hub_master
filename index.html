@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Hub Master Internato GO | Ecossistema Interativo de Ginecologia e Obstetrícia (8 Portais)</title>
+  <meta name="description" content="Dashboard Central Interativo do Internato de Ginecologia e Obstetrícia. Explore os 8 Portais Especializados com mais de 95 imagens ultrarrealistas, calculadoras clínicas e 115+ casos padrão USMLE Step 2 CK / Step 3 e Revalida.">
+
+  <!-- Configurações Mobile Web App (iOS / Android) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Hub Internato GO">
+  <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#090d16" media="(prefers-color-scheme: dark)">
+
+  <!-- Previne Flash of Unstyled Content (FOUC) -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        const savedFont = localStorage.getItem('fontSizePreference');
+        if (savedFont) {
+          document.documentElement.setAttribute('data-font-size', savedFont);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          screens: {
+            'xs': '480px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col antialiased transition-colors duration-200">
+
+  <!-- ======================================================================
+       NAVBAR SUPERIOR FIXA (POSITION: FIXED, RESPONSIVA, SEM SIDEBAR REDUNDANTE)
+       ====================================================================== -->
+  <header class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+    <div class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16 gap-2 sm:gap-3">
+        
+        <!-- Logo e Identidade do Ecossistema -->
+        <a href="#" class="flex items-center gap-2.5 min-w-0 flex-shrink group" title="Hub Master Internato GO">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-rose-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform flex-shrink-0">
+            <i data-lucide="compass" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-xs sm:text-base tracking-tight text-slate-900 dark:text-white truncate">HUB INTERNATO GO</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 hidden xs:inline-block flex-shrink-0">8 Portais • Master</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Barra de Busca Global em Todos os 8 Sites (Desktop & Tablet) -->
+        <div class="hidden md:flex items-center flex-1 max-w-md mx-3">
+          <div class="relative w-full">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="global-search" placeholder="Pesquisar tema nos 8 portais (ex: HELLP, BI-RADS, MEC, Bakri, Sífilis...)" 
+              class="w-full pl-9 pr-14 py-2 text-xs rounded-xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-800 dark:text-slate-200 placeholder-slate-400 transition-all">
+            <kbd class="hidden lg:inline-flex items-center absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded shadow-sm">Ctrl K</kbd>
+          </div>
+        </div>
+
+        <!-- Ações Rápidas -->
+        <div class="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+          <a href="#portais-grid" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 border border-indigo-200 dark:border-indigo-800 transition-all flex items-center gap-1">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">8 Portais</span>
+          </a>
+
+          <a href="#desafio-rapido" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1">
+            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span class="hidden sm:inline">Desafio</span>
+          </a>
+
+          <!-- Controles de Fonte (A- / A / A+) -->
+          <div class="flex items-center bg-slate-100 dark:bg-slate-800/90 rounded-lg p-0.5 border border-slate-200 dark:border-slate-700" title="Tamanho da Fonte">
+            <button type="button" id="font-decrease" class="px-1.5 py-1 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600">A-</button>
+            <button type="button" id="font-reset" class="px-1.5 py-1 text-xs font-extrabold text-slate-800 dark:text-slate-200 hover:text-indigo-600">A</button>
+            <button type="button" id="font-increase" class="px-1.5 py-1 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600">A+</button>
+          </div>
+
+          <!-- Botão Dark/Light Mode -->
+          <button type="button" id="theme-toggle" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all" title="Alternar Tema">
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+            <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-indigo-600"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Busca Mobile -->
+      <div class="md:hidden pb-2.5 pt-0.5">
+        <div class="relative w-full">
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" oninput="document.getElementById('global-search').value = this.value; document.getElementById('global-search').dispatchEvent(new Event('input'))" placeholder="Filtrar os 8 portais por tema, patologia ou droga..." 
+            class="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 placeholder-slate-400">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       CONTEÚDO PRINCIPAL DO DASHBOARD
+       ====================================================================== -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-8">
+
+    <!-- 1. HERO COMMAND CENTER -->
+    <section class="glass-card rounded-3xl overflow-hidden border border-indigo-500/20 shadow-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+        
+        <!-- Coluna Texto & Métricas -->
+        <div class="lg:col-span-7 p-5 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-indigo-600 text-white shadow-sm flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Ecossistema Completo (Partes 1 a 8)
+            </span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+              USMLE Step 2 CK / Step 3 • Revalida • Residência
+            </span>
+          </div>
+
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+            Domine Toda a Ginecologia e Obstetrícia em <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-rose-500 dark:from-indigo-400 dark:via-purple-400 dark:to-rose-400">8 Portais Interativos</span>
+          </h1>
+
+          <p class="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            Bem-vindo à sua central de comando acadêmica e clínica. Cada um dos <strong>8 portais especializados</strong> une o rigor científico das provas da <strong>Ivy League / USMLE</strong> e diretrizes brasileiras (<strong>FEBRASGO, INCA e Ministério da Saúde</strong>) com a famosa <strong>🎈 Didática para Criança de 5 Anos</strong>, imagens clínicas ultra-realistas e calculadoras de plantão.
+          </p>
+
+          <!-- Estatísticas Globais do Ecossistema -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+            <div class="p-3 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-800/60 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">8</span>
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Portais Especializados</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-rose-50/80 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-800/60 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-400">95+</span>
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Imagens & Diagramas HD</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">115+</span>
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Casos Clínicos USMLE</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200/60 dark:border-amber-800/60 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400">24+</span>
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Calculadoras & Quizzes</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#portais-grid" class="btn-pulse px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-all">
+              <i data-lucide="rocket" class="w-4 h-4"></i> Explorar os 8 Portais Agora
+            </a>
+            <a href="#trilha-estudo" class="px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all">
+              <i data-lucide="map" class="w-4 h-4 text-purple-500"></i> Ver Trilha de Estudo Recomendada
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna Imagem Hero Ultra-Realista -->
+        <div class="lg:col-span-5 h-full">
+          <div class="relative h-64 sm:h-80 lg:h-full min-h-[280px] w-full bg-slate-900 overflow-hidden">
+            <img src="assets/img/dashboard_hero_master.jpg" alt="Centro de Comando e Simulação em Ginecologia e Obstetrícia" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-5 text-white">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-sky-400 font-bold">Simulação & Prática Baseada em Evidências</span>
+              <p class="text-xs sm:text-sm font-bold mt-0.5">Do Exame Físico Básico às Emergências Cirúrgicas e Políticas do SUS</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. PASSAPORTE DO ALUNO (GAMIFICAÇÃO E RASTREAMENTO DE PROGRESSO) -->
+    <section class="glass-card p-5 sm:p-6 rounded-2xl border-l-4 border-l-indigo-600 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <i data-lucide="award" class="w-5 h-5 text-indigo-600 dark:text-indigo-400"></i>
+            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">Passaporte de Domínio do Internato GO</h2>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Marque os portais abaixo à medida que concluir sua leitura e os casos clínicos. Seu progresso fica salvo automaticamente neste navegador!
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 self-start sm:self-center">
+          <span id="progress-rank-badge" class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+            🔰 Interno Calouro
+          </span>
+          <button type="button" id="btn-reset-progress" class="p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Reiniciar Progresso">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Progresso Animada -->
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between text-xs font-bold">
+          <span id="progress-text" class="text-indigo-600 dark:text-indigo-400">0% Concluído (0 de 8 Portais)</span>
+          <span class="text-slate-400 font-mono">Meta: 8/8 Portais Dominados</span>
+        </div>
+        <div class="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+          <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-indigo-600 via-purple-500 to-emerald-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FILTROS INTELIGENTES & GRID DOS 8 PORTAIS INTERATIVOS -->
+    <section id="portais-grid" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="layers" class="w-6 h-6 text-indigo-600 dark:text-indigo-400"></i>
+            Explore os 8 Portais Especializados
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+            Escolha por área de atuação ou siga a ordem numérica progressiva do curso completo
+          </p>
+        </div>
+
+        <!-- Botões de Filtro Rápido por Perfil -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button type="button" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-md transition-all" data-filter="all">
+            Todos (8)
+          </button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-rose-400 transition-all flex items-center gap-1" data-filter="plantao">
+            🚨 Plantão & Parto (4)
+          </button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition-all flex items-center gap-1" data-filter="ambulatorio">
+            🏥 Ambulatório & SUS (5)
+          </button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-purple-400 transition-all flex items-center gap-1" data-filter="cirurgia">
+            🔬 Oncologia & Cirurgia (3)
+          </button>
+        </div>
+      </div>
+
+      <!-- Feedback de Busca Vazia -->
+      <div id="no-search-results" class="hidden p-8 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-center space-y-2">
+        <i data-lucide="search-x" class="w-8 h-8 mx-auto text-amber-500"></i>
+        <h3 class="text-base font-bold text-amber-900 dark:text-amber-200">Nenhum portal encontrado com esse termo</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400">Tente buscar por <em>Pré-natal, Eclâmpsia, Partograma, SOP, Sífilis, Mama, DIU, Violência</em> ou limpe a busca.</p>
+      </div>
+
+      <!-- GRID DE CARDS DOS 8 PORTAIS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+
+        <!-- ==============================================================
+             PORTAL 01: FUNDAMENTOS EM GO
+             ============================================================== -->
+        <article id="card-p1" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="ambulatorio cirurgia">
+          <div>
+            <!-- Imagem de Capa com Overlay -->
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_fundamentos_go/assets/img/semiologia_exame_especular_toque.jpg" alt="Fundamentos em Ginecologia e Obstetrícia" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-sky-600 text-white shadow">Portal 01</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-sky-300 backdrop-blur-sm">Base Essencial</span>
+              </div>
+              <div id="status-p1" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Fundamentos em Ginecologia & Obstetrícia</h3>
+                <p class="text-xs text-slate-300">Semiologia, Anatomia Pélvica, Exame Especular, Toque Bimanual e Segurança do Paciente</p>
+              </div>
+            </div>
+
+            <!-- Corpo do Card -->
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                A porta de entrada do internato! Aprenda o passo a passo da anamnese ginecológica e obstétrica, técnica correta do exame especular, colheita citológica, avaliação de pelvimetria, índice de Bishop e barreiras de segurança cirúrgica.
+              </p>
+
+              <!-- Tags High-Yield -->
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-sky-50 text-sky-700 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800">Exame Especular & Toque</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-sky-50 text-sky-700 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800">Índice de Bishop</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-sky-50 text-sky-700 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800">Anatomia Pélvica</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-sky-50 text-sky-700 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800">Segurança Queijo Suíço</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rodapé de Ação do Card -->
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p1">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_fundamentos_go/index.html" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 01 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 02: OBSTETRÍCIA & MEDICINA MATERNO-FETAL
+             ============================================================== -->
+        <article id="card-p2" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="ambulatorio plantao">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_obstetricia/assets/img/leopold_maneuvers.jpg" alt="Obstetrícia e Medicina Materno-Fetal" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-indigo-600 text-white shadow">Portal 02</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-indigo-300 backdrop-blur-sm">Pré-Natal & Feto</span>
+              </div>
+              <div id="status-p2" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Obstetrícia & Medicina Materno-Fetal</h3>
+                <p class="text-xs text-slate-300">Manobras de Leopold, Pré-Natal, Vitalidade Fetal, CTG, Doppler, DMG e Isoimunização Rh</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Domine o acompanhamento pré-natal completo, as 4 Manobras de Leopold-Zweifel em alta definição, fisiopatologia do Diabetes Gestacional (DMG), centralização fetal ao Doppler (ACM/Umbilical), Cardiotocografia (DIP I, II e Variável) e gestação gemelar (STFF).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">4 Manobras de Leopold</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Cardiotocografia & Doppler</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Diabetes Gestacional</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Isoimunização Rh</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p2">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_obstetricia/index.html" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 02 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 03: ASSISTÊNCIA AO PARTO & PUERPÉRIO
+             ============================================================== -->
+        <article id="card-p3" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="plantao">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_parto_puerperio/assets/img/mecanismo_parto_movimentos.jpg" alt="Assistência ao Parto e Puerpério" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-teal-600 text-white shadow">Portal 03</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-teal-300 backdrop-blur-sm">Centro Obstétrico</span>
+              </div>
+              <div id="status-p3" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Assistência ao Parto & Puerpério</h3>
+                <p class="text-xs text-slate-300">Mecanismo de Parto, Partograma da OMS, Distocias, HPP, Balão de Bakri e Amamentação</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Tudo para brilhar no Centro Obstétrico: tempos do mecanismo de parto (insinuação, descida, rotação interna, desprendimento), interpretação das curvas do Partograma, manobra de McRoberts na distocia de ombros, manejo dos 4 Ts da Hemorragia Pós-Parto e fisiologia da lactação.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800">Partograma OMS</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800">Distocia de Ombros (McRoberts)</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800">Balão de Bakri & HPP</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800">Puerpério & Lóquios</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p3">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_parto_puerperio/index.html" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 03 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 04: URGÊNCIAS E EMERGÊNCIAS OBSTÉTRICAS
+             ============================================================== -->
+        <article id="card-p4" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="plantao">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_urgencias_obstetricas/assets/img/preeclampsia_grave_hellp_magnesio.jpg" alt="Urgências e Emergências Obstétricas" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-rose-600 text-white shadow">Portal 04</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-rose-300 backdrop-blur-sm">Pronto-Socorro</span>
+              </div>
+              <div id="status-p4" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Urgências e Emergências Obstétricas</h3>
+                <p class="text-xs text-slate-300">Pré-Eclâmpsia, Síndrome HELLP, Eclâmpsia, DPP vs Placenta Prévia, Ectópica e Choque</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Condutas salvadoras de vidas para o plantão obstétrico: esquemas de Sulfato de Magnésio (Pritchard e Zuspan), intoxicação e antídoto (Gluconato de Cálcio), diagnóstico diferencial das hemorragias da 1ª e 2ª metade, gravidez ectópica rota, Mola Hidatiforme e Cesárea Perimortem.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800">Eclâmpsia & HELLP</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800">DPP vs Placenta Prévia</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800">Gravidez Ectópica & Mola</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800">Sulfato de Magnésio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p4">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_urgencias_obstetricas/index.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 04 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 05: GINECOLOGIA GERAL & ENDOCRINOLOGIA
+             ============================================================== -->
+        <article id="card-p5" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="ambulatorio">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_ginecologia_geral/assets/img/sangramento_uterino_palm_coein.jpg" alt="Ginecologia Geral e Endocrinologia Ginecológica" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-purple-600 text-white shadow">Portal 05</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-purple-300 backdrop-blur-sm">Endocrino & Pelve</span>
+              </div>
+              <div id="status-p5" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Ginecologia Geral & Endocrinologia</h3>
+                <p class="text-xs text-slate-300">Ciclo Menstrual, PALM-COEIN, SOP (Rotterdam), Endometriose, Miomas e Amenorreias</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Domine a fisiologia da Teoria das Duas Células-Duas Gonadotrofinas, investigação das amenorreias pelos 4 compartimentos, Sangramento Uterino Anormal (sistema PALM-COEIN da FIGO), Síndrome dos Ovários Policísticos (Rotterdam), Endometriose, Adenomiose e classificação O-RADS/IOTA.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800">PALM-COEIN & FIGO</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800">SOP (Rotterdam)</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Endometriose & Adenomiose</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Amenorreias</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p5">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_ginecologia_geral/index.html" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 05 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 06: INFECÇÕES GINECOLÓGICAS & ISTs
+             ============================================================== -->
+        <article id="card-p6" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="ambulatorio plantao">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_infeccoes_ists/assets/img/vulvovaginites_matriz_comparativa.jpg" alt="Infecções Ginecológicas e ISTs" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-amber-600 text-white shadow">Portal 06</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-amber-300 backdrop-blur-sm">Infectologia GO</span>
+              </div>
+              <div id="status-p6" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Infecções Ginecológicas & ISTs</h3>
+                <p class="text-xs text-slate-300">Vulvovaginites (Amsel), Cervicites, DIP (Monif), Úlceras Genitais, Sífilis e HIV na Gestação</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Guia definitivo sobre o ecossistema vaginal, diagnóstico diferencial de corrimentos (Vaginose, Candidíase, Tricomoníase), úlceras genitais (Sífilis, Cancro Mole, Herpes, LGV, Donovanose), estadiamento de Monif para Doença Inflamatória Pélvica e prevenção da transmissão vertical do HIV.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Critérios de Amsel</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">DIP & Monif</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Sífilis na Gestante</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Úlceras Genitais</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p6">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_infeccoes_ists/index.html" class="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 06 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 07: ONCOLOGIA GINECOLÓGICA, MASTOLOGIA E CIRURGIA
+             ============================================================== -->
+        <article id="card-p7" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="cirurgia ambulatorio">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_onco_masto_cirurgia/assets/img/colposcopia_cervical_real.jpg" alt="Oncologia Ginecológica, Mastologia e Cirurgia" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-pink-600 text-white shadow">Portal 07</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-pink-300 backdrop-blur-sm">Onco • Masto • Cirurgia</span>
+              </div>
+              <div id="status-p7" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Oncologia Ginecológica, Mastologia & Cirurgia</h3>
+                <p class="text-xs text-slate-300">Rastreamento Cervical, Colposcopia, Mamografia BI-RADS, Câncer de Mama, Ovário e Cirurgia Pélvica</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Explore fotos reais de Colposcopia, Mamografia BI-RADS, Laparoscopia, Histeroscopia e Anatomia Cirúrgica do Ureter! Inclui oncogênese molecular do HPV (E6/E7), classificação molecular do câncer de endométrio (TCGA/FIGO), subtipos de mama e prevenção de lesões ureterais.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-pink-50 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800">BI-RADS 0 a 6</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-pink-50 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800">Colposcopia & HPV</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-pink-50 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800">Histerectomia & Ureter</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-pink-50 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800">Laparoscopia & Histeroscopia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p7">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_onco_masto_cirurgia/index.html" class="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 07 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             PORTAL 08: PLANEJAMENTO REPRODUTIVO, VIOLÊNCIA, BIOÉTICA & SUS
+             ============================================================== -->
+        <article id="card-p8" class="portal-card glass-card rounded-2xl flex flex-col justify-between overflow-hidden" data-categories="ambulatorio plantao">
+          <div>
+            <div class="relative h-48 sm:h-52 w-full bg-slate-900 overflow-hidden">
+              <img src="site_planejamento_violencia_sus/assets/img/larc_diu_implante_real.jpg" alt="Planejamento Reprodutivo, Violência, Bioética e SUS" class="portal-thumb w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-black uppercase bg-emerald-600 text-white shadow">Portal 08</span>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-black/60 text-emerald-300 backdrop-blur-sm">Contracepção • Ética • SUS</span>
+              </div>
+              <div id="status-p8" class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-extrabold leading-snug">Planejamento Reprodutivo, Violência & SUS</h3>
+                <p class="text-xs text-slate-300">Critérios MEC OMS, LARCs, Lei 14.443/22, Violência Sexual (PEP 72h), Aborto Legal e Climatério/THM</p>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                O fechamento magistral do curso: Critérios MEC 1 a 4 da OMS, dispositivos LARCs, nova Lei da Laqueadura (21 anos sem autorização do cônjuge), investigação dos 4 pilares da infertilidade, protocolo de 72h na violência sexual, aborto legal sem B.O., Rede Cegonha e Janela de Oportunidade da THM.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Critérios MEC & LARCs</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">PEP 72h & Maria da Penha</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Aborto Legal & AMIU</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Janela da THM & DEXA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-3.5 bg-slate-100/70 dark:bg-slate-900/70 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+            <label class="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              <input type="checkbox" class="portal-check w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500" data-portal-id="p8">
+              <span>Marcar como Estudado</span>
+            </label>
+            <a href="site_planejamento_violencia_sus/index.html" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all">
+              Abrir Portal 08 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. DESAFIO CLÍNICO RELÂMPAGO & CENTRAL DE ATALHOS DE CALCULADORAS -->
+    <section id="desafio-rapido" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-4">
+      
+      <!-- Desafio Clínico Relâmpago (Coluna Esquerda - 5 Colunas) -->
+      <div class="lg:col-span-5 glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between space-y-4 border-t-4 border-t-amber-500">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">Desafio Clínico Relâmpago</h2>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Teste seu raciocínio rápido entre os 8 portais</p>
+              </div>
+            </div>
+            <button type="button" id="btn-next-challenge" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 hover:bg-amber-200 transition-colors flex items-center gap-1">
+              <i data-lucide="shuffle" class="w-3.5 h-3.5"></i> Sortear Outro
+            </button>
+          </div>
+
+          <div id="daily-challenge-box" class="pt-2"></div>
+        </div>
+      </div>
+
+      <!-- Atalhos Diretos para Calculadoras e Ferramentas dos Portais (Coluna Direita - 7 Colunas) -->
+      <div class="lg:col-span-7 glass-card p-5 sm:p-6 rounded-2xl space-y-4 border-t-4 border-t-indigo-600">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold">
+            <i data-lucide="calculator" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">Acesso Rápido às Calculadoras & Simuladores</h2>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Abra diretamente a ferramenta clínica desejada em 1 clique</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          
+          <a href="site_planejamento_violencia_sus/index.html#ferramentas" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 block">Calculadora Critérios MEC (OMS)</span>
+              <span class="text-[11px] text-slate-500">Elegibilidade contraceptiva 1 a 4 (Portal 08)</span>
+            </div>
+          </a>
+
+          <a href="site_onco_masto_cirurgia/index.html#ferramentas" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-pink-50 dark:hover:bg-pink-950/30 border border-slate-200 dark:border-slate-800 hover:border-pink-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="scan" class="w-5 h-5 text-pink-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-pink-600 block">Simulador BI-RADS & Índice RMI</span>
+              <span class="text-[11px] text-slate-500">Conduta mamográfica e risco ovariano (Portal 07)</span>
+            </div>
+          </a>
+
+          <a href="site_urgencias_obstetricas/index.html" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-800 hover:border-rose-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="heart-pulse" class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-rose-600 block">Protocolo Sulfato de Magnésio</span>
+              <span class="text-[11px] text-slate-500">Esquemas Pritchard/Zuspan e HELLP (Portal 04)</span>
+            </div>
+          </a>
+
+          <a href="site_parto_puerperio/index.html" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-teal-50 dark:hover:bg-teal-950/30 border border-slate-200 dark:border-slate-800 hover:border-teal-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="activity" class="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-teal-600 block">Curvas do Partograma & HPP</span>
+              <span class="text-[11px] text-slate-500">Distocias e Balão de Bakri (Portal 03)</span>
+            </div>
+          </a>
+
+          <a href="site_planejamento_violencia_sus/index.html#ferramentas" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-800 hover:border-emerald-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="thermometer-sun" class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 block">Avaliador da Janela da THM</span>
+              <span class="text-[11px] text-slate-500">Climatério, regra do útero e vias (Portal 08)</span>
+            </div>
+          </a>
+
+          <a href="site_infeccoes_ists/index.html" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-amber-50 dark:hover:bg-amber-950/30 border border-slate-200 dark:border-slate-800 hover:border-amber-400 transition-all flex items-start gap-3 group">
+            <i data-lucide="microscope" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-amber-600 block">Algoritmo de Corrimentos & Úlceras</span>
+              <span class="text-[11px] text-slate-500">Amsel, Monif e Sífilis na gestação (Portal 06)</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 5. TRILHA RECOMENDADA DE ESTUDO (CRONOGRAMA DO INTERNATO) -->
+    <section id="trilha-estudo" class="glass-card p-5 sm:p-6 rounded-2xl space-y-4">
+      <div class="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold">
+          <i data-lucide="map" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <h2 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">Roteiro Estratégico de Estudo (Ciclo de 4 Etapas)</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Como combinar os 8 portais para absorção máxima antes da prova e do plantão</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 font-bold">Etapa 1: Alicerce Clínico</span>
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm">Portais 01 & 02</h4>
+          <p class="text-slate-600 dark:text-slate-400">Comece dominando o exame físico pélvico, as 4 Manobras de Leopold, o pré-natal e a vitalidade fetal (CTG/Doppler).</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-bold">Etapa 2: Sala de Parto & PS</span>
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm">Portais 03 & 04</h4>
+          <p class="text-slate-600 dark:text-slate-400">Mergulhe no Partograma, distocias, hemorragia pós-parto, Pré-Eclâmpsia/HELLP e sangramentos da 1ª e 2ª metade.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 font-bold">Etapa 3: Ambulatório GO</span>
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm">Portais 05 & 06</h4>
+          <p class="text-slate-600 dark:text-slate-400">Estude o ciclo menstrual, PALM-COEIN, SOP, endometriose, vulvovaginites, DIP e infecções sexualmente transmissíveis.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Etapa 4: Alta Complexidade & SUS</span>
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm">Portais 07 & 08</h4>
+          <p class="text-slate-600 dark:text-slate-400">Finalize com rastreamento oncológico, BI-RADS, cirurgia pélvica, contracepção MEC, violência contra a mulher e SUS.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ DO ECOSSISTEMA
+       ====================================================================== -->
+  <footer class="mt-12 border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/80 py-8 text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-indigo-600 to-rose-500 text-white flex items-center justify-center font-bold">GO</div>
+          <span class="font-extrabold text-slate-900 dark:text-white">Hub Master Internato de Ginecologia & Obstetrícia</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 text-[11px] font-semibold">
+          <a href="site_fundamentos_go/index.html" class="hover:text-indigo-500">01. Fundamentos</a>
+          <a href="site_obstetricia/index.html" class="hover:text-indigo-500">02. Obstetrícia</a>
+          <a href="site_parto_puerperio/index.html" class="hover:text-indigo-500">03. Parto & Puerpério</a>
+          <a href="site_urgencias_obstetricas/index.html" class="hover:text-indigo-500">04. Urgências</a>
+          <a href="site_ginecologia_geral/index.html" class="hover:text-indigo-500">05. Ginecologia</a>
+          <a href="site_infeccoes_ists/index.html" class="hover:text-indigo-500">06. Infecções/ISTs</a>
+          <a href="site_onco_masto_cirurgia/index.html" class="hover:text-indigo-500">07. Onco/Masto/Cirurgia</a>
+          <a href="site_planejamento_violencia_sus/index.html" class="hover:text-indigo-500">08. Planejamento/Violência/SUS</a>
+        </div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <p>© 2026 Ecossistema Internato GO • 100% Responsivo & Pronto para GitHub Pages</p>
+        <p>Padrão Ivy League • USMLE Step 2 CK / Step 3 • FEBRASGO • Ministério da Saúde</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Principal -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
