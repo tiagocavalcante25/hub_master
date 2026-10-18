@@ -1,0 +1,712 @@
+/* custom.css - Estilos Avançados & Motor de Responsividade e Legibilidade Fluida
+   Portal de Infecções Ginecológicas e ISTs (Parte 6 - PCDT / SUS / CDC / USMLE)
+   Otimizado para iOS (Safari), Android (Chrome/Firefox), Tablets e Desktops.
+   Deploy: GitHub Pages / Web.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   1. RESET FLUIDO, OVERFLOW-X: HIDDEN E CONTÊINERES COM MAX-WIDTH: 100%
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  min-width: 0; /* Permite que filhos em Flexbox e CSS Grid encolham fluidamente */
+}
+
+html {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-x: clip;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: calc(var(--fluid-base) * var(--font-scale));
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 7.5rem) + 1rem); /* Compensação dinâmica da navbar fixa */
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-x: clip;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: var(--header-height, 7.5rem) !important; /* Espaço dinâmico para a navbar fixa no topo */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Compensação de scroll-margin-top sincronizada com a altura real do cabeçalho */
+.scroll-mt-24,
+.scroll-mt-28,
+article[id^="modulo-"],
+div[id^="motor-"],
+section[id] {
+  scroll-margin-top: calc(var(--header-height, 7.5rem) + 1rem) !important;
+}
+
+/* Prevenção global de estouro de texto com word-wrap e overflow-wrap */
+p, span, h1, h2, h3, h4, h5, h6, li, blockquote, dt, dd, th, td, a, button, label, input, select, textarea, div {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+p, li, dd, blockquote {
+  line-height: 1.68;
+}
+
+.leading-none {
+  line-height: 1.1 !important;
+}
+.leading-tight {
+  line-height: 1.25 !important;
+}
+.leading-snug {
+  line-height: 1.38 !important;
+}
+.leading-normal {
+  line-height: 1.6 !important;
+}
+.leading-relaxed {
+  line-height: 1.68 !important;
+}
+.leading-loose {
+  line-height: 1.8 !important;
+}
+
+/* ==========================================================================
+   2. CONTÊINERES 100% RESPONSIVOS COM MIN(100%, REM) SEM DESCONFIGURAR LAYOUTS
+   ========================================================================== */
+.container,
+main,
+section,
+footer,
+article,
+form,
+.glass-card,
+.module-card,
+.table-responsive-container,
+.img-fluid-container {
+  width: 100%;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.max-w-7xl {
+  width: 100%;
+  max-width: min(100%, 80rem) !important;
+}
+.max-w-6xl {
+  width: 100%;
+  max-width: min(100%, 72rem) !important;
+}
+.max-w-5xl {
+  width: 100%;
+  max-width: min(100%, 64rem) !important;
+}
+.max-w-4xl {
+  width: 100%;
+  max-width: min(100%, 56rem) !important;
+}
+.max-w-3xl {
+  width: 100%;
+  max-width: min(100%, 48rem) !important;
+}
+.max-w-2xl {
+  width: 100%;
+  max-width: min(100%, 42rem) !important;
+}
+.max-w-xl {
+  width: 100%;
+  max-width: min(100%, 36rem) !important;
+}
+.max-w-lg {
+  width: 100%;
+  max-width: min(100%, 32rem) !important;
+}
+.max-w-md {
+  width: 100%;
+  max-width: min(100%, 28rem) !important;
+}
+.max-w-sm {
+  width: 100%;
+  max-width: min(100%, 24rem) !important;
+}
+.max-w-xs {
+  width: 100%;
+  max-width: min(100%, 20rem) !important;
+}
+
+/* ==========================================================================
+   3. VARIÁVEIS GLOBAIS, ESCALA DE FONTE AUMENTADA & SAFE AREAS (iOS / ANDROID)
+   ========================================================================== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #4338ca 100%);
+  --brand-rose: #e11d48;
+  --brand-navy: #0f172a;
+  --brand-indigo: #4f46e5;
+  --brand-emerald: #059669;
+
+  /* Safe Area Insets para notch de iPhone, Dynamic Island e barras de gestos Android */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Altura dinâmica do cabeçalho fixo (atualizada via ResizeObserver no JS) */
+  --header-height: 7.5rem;
+
+  /* Fator de escala dinâmico (Reader Mode / Acessibilidade) */
+  --font-scale: 1;
+
+  /* Base tipográfica responsiva com clamp(): 15.5px (mobile) a 17.5px (desktop) */
+  --fluid-base: clamp(15.5px, 0.95rem + 0.25vw, 17.5px);
+}
+
+/* Modos Dinâmicos de Tamanho de Fonte (Reader Mode Clínico) */
+html[data-font-size="normal"] {
+  --font-scale: 1;
+}
+html[data-font-size="large"] {
+  --font-scale: 1.12;
+}
+html[data-font-size="xlarge"] {
+  --font-scale: 1.24;
+}
+
+/* ==========================================================================
+   4. IMAGENS FLUIDAS (LARGURA MÁXIMA 100% E ALTURA PROPORCIONAL)
+   ========================================================================== */
+img, picture, video, canvas, svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.overflow-hidden {
+  max-width: 100% !important;
+}
+
+.img-fluid-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.fluid-img,
+.zoomable-image,
+.module-card img,
+.glass-card img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1350 / 900;
+  object-fit: cover;
+  display: block;
+}
+
+/* Visualizador de imagem no Lightbox: contido sem estourar altura nem largura */
+#lightbox-modal .lightbox-img,
+#lightbox-img {
+  max-width: 100% !important;
+  max-height: 75vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   5. MENU DE NAVEGAÇÃO COM POSITION: FIXED, FLEXBOX + FLEX-WRAP E MIN-HEIGHT
+   ========================================================================== */
+header.glass-nav,
+header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  z-index: 50 !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-sizing: border-box !important;
+  padding-top: max(0px, env(safe-area-inset-top));
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
+.dark header.glass-nav,
+.dark header,
+html.dark header.glass-nav,
+html.dark header {
+  background: rgba(15, 23, 42, 0.96) !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.9);
+}
+
+/* Barra principal e faixa de módulos com Flexbox, flex-wrap e min-height para evitar sobreposição */
+header .header-main-bar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 3.75rem !important;
+  height: auto !important;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  row-gap: 0.45rem !important;
+}
+
+header #module-subnav,
+header .header-modules-nav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  min-height: 2.6rem !important;
+  height: auto !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  gap: 0.375rem !important;
+  overflow-x: visible !important;
+  white-space: normal !important;
+}
+
+/* Cabeçalhos internos de módulos e seções com Flexbox + flex-wrap + min-height */
+.module-header,
+.block-header,
+article.module-card > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.75rem;
+  gap: 0.65rem;
+}
+
+/* Ajustes finos de tipografia na barra de navegação para caber em telas móveis */
+header .nav-brand-title {
+  font-size: clamp(0.84rem, 0.78rem + 0.3vw, 1.05rem) !important;
+  line-height: 1.25 !important;
+}
+
+header .nav-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.95rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem) !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+}
+
+header .subnav-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.16vw, 0.8rem) !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+}
+
+header .font-size-btn {
+  min-height: 1.65rem;
+  font-size: clamp(0.7rem, 0.66rem + 0.15vw, 0.78rem) !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 420px) {
+  header .header-main-bar {
+    gap: 0.35rem !important;
+  }
+  header .subnav-pill {
+    padding: 0.2rem 0.45rem !important;
+  }
+}
+
+/* ==========================================================================
+   6. TIPOGRAFIA RESPONSIVA COM CLAMP() E LINE-HEIGHT CALIBRADO
+   ========================================================================== */
+h1 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.6rem, 1.28rem + 2.1vw, 2.65rem) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.025em;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h2 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.3rem, 1.1rem + 1.15vw, 2rem) !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.02em;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h3 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.12rem, 0.98rem + 0.65vw, 1.48rem) !important;
+  line-height: 1.34 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.98rem, 0.92rem + 0.35vw, 1.22rem) !important;
+  line-height: 1.42 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Escalas utilitárias com clamp() e line-height equilibrado */
+.text-\[9px\] {
+  font-size: clamp(0.68rem, 0.64rem + 0.12vw, 0.75rem) !important;
+  line-height: 1.35 !important;
+}
+
+.text-\[10px\] {
+  font-size: clamp(0.72rem, 0.68rem + 0.15vw, 0.8rem) !important;
+  line-height: 1.4 !important;
+}
+
+.text-\[11px\] {
+  font-size: clamp(0.76rem, 0.72rem + 0.18vw, 0.85rem) !important;
+  line-height: 1.45 !important;
+}
+
+.text-xs {
+  font-size: clamp(0.81rem, 0.77rem + 0.18vw, 0.9rem) !important;
+  line-height: 1.55 !important;
+}
+
+.text-sm {
+  font-size: clamp(0.9rem, 0.85rem + 0.24vw, 1rem) !important;
+  line-height: 1.62 !important;
+}
+
+.text-base {
+  font-size: clamp(0.98rem, 0.93rem + 0.28vw, 1.1rem) !important;
+  line-height: 1.68 !important;
+}
+
+.text-lg {
+  font-size: clamp(1.1rem, 1.02rem + 0.42vw, 1.26rem) !important;
+  line-height: 1.55 !important;
+}
+
+.text-xl {
+  font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.44rem) !important;
+  line-height: 1.42 !important;
+}
+
+.text-2xl {
+  font-size: clamp(1.34rem, 1.18rem + 0.82vw, 1.68rem) !important;
+  line-height: 1.34 !important;
+}
+
+.text-3xl {
+  font-size: clamp(1.52rem, 1.32rem + 1.1vw, 2.02rem) !important;
+  line-height: 1.26 !important;
+}
+
+.text-4xl {
+  font-size: clamp(1.75rem, 1.48rem + 1.5vw, 2.4rem) !important;
+  line-height: 1.2 !important;
+}
+
+.text-5xl {
+  font-size: clamp(1.98rem, 1.62rem + 2vw, 2.85rem) !important;
+  line-height: 1.16 !important;
+}
+
+@media (min-width: 640px) {
+  .sm\:text-xs {
+    font-size: clamp(0.81rem, 0.77rem + 0.18vw, 0.9rem) !important;
+    line-height: 1.55 !important;
+  }
+  .sm\:text-sm {
+    font-size: clamp(0.9rem, 0.85rem + 0.24vw, 1rem) !important;
+    line-height: 1.62 !important;
+  }
+  .sm\:text-base {
+    font-size: clamp(0.98rem, 0.93rem + 0.28vw, 1.1rem) !important;
+    line-height: 1.68 !important;
+  }
+  .sm\:text-lg {
+    font-size: clamp(1.1rem, 1.02rem + 0.42vw, 1.26rem) !important;
+    line-height: 1.55 !important;
+  }
+  .sm\:text-xl {
+    font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.44rem) !important;
+    line-height: 1.42 !important;
+  }
+  .sm\:text-2xl {
+    font-size: clamp(1.34rem, 1.18rem + 0.82vw, 1.68rem) !important;
+    line-height: 1.34 !important;
+  }
+  .sm\:text-3xl {
+    font-size: clamp(1.52rem, 1.32rem + 1.1vw, 2.02rem) !important;
+    line-height: 1.26 !important;
+  }
+  .sm\:text-4xl {
+    font-size: clamp(1.75rem, 1.48rem + 1.5vw, 2.4rem) !important;
+    line-height: 1.2 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-5xl {
+    font-size: clamp(1.98rem, 1.62rem + 2vw, 2.85rem) !important;
+    line-height: 1.16 !important;
+  }
+}
+
+/* ==========================================================================
+   7. GLASSMORPHISM & PAINÉIS CLÍNICOS
+   ========================================================================== */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+html.dark .glass-nav {
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html.dark .glass-card {
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ==========================================================================
+   8. TABELAS CLÍNICAS RESPONSIVAS COM ROLAGEM INTERNA BLINDADA
+   ========================================================================== */
+.table-responsive-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   9. SCROLLBAR CUSTOMIZADA & NO-SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.8);
+  border-radius: 9999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 1);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   10. 3D FLASHCARD FLIP (ESTUDO ATIVO INTERATIVO — CORRIGIDO CONTRA SOBREPOSIÇÃO)
+   ========================================================================== */
+.flashcard-container,
+.perspective-1000 {
+  perspective: 1000px;
+  min-height: 16.5rem;
+}
+
+.flashcard-inner,
+.card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 16.5rem;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-flipped .flashcard-inner,
+.flashcard-container.card-flipped .flashcard-inner,
+.card-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back,
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 16.5rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.25rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.flashcard-front {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+  z-index: 2;
+}
+
+html.dark .flashcard-front {
+  background: #0f172a;
+  border-color: #1e293b;
+}
+
+.flashcard-back,
+.card-back {
+  transform: rotateY(180deg);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.08);
+  pointer-events: none;
+}
+
+html.dark .flashcard-back {
+  background: rgba(6, 78, 59, 0.35);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.card-flipped .flashcard-front,
+.flashcard-container.card-flipped .flashcard-front {
+  pointer-events: none;
+}
+
+.card-flipped .flashcard-back,
+.flashcard-container.card-flipped .flashcard-back {
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   11. LIGHTBOX MODAL & ZOOM
+   ========================================================================== */
+#lightbox-modal {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#lightbox-img {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  cursor: grab;
+}
+
+#lightbox-img:active {
+  cursor: grabbing;
+}
+
+/* ==========================================================================
+   12. BOTÃO DE TEMA E ANIMAÇÕES
+   ========================================================================== */
+html.dark .icon-moon {
+  display: none;
+}
+html.dark .icon-sun {
+  display: inline-block;
+}
+html:not(.dark) .icon-sun {
+  display: none;
+}
+html:not(.dark) .icon-moon {
+  display: inline-block;
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   13. BOTÃO FLUTUANTE VOLTAR AO TOPO (FAB)
+   ========================================================================== */
+#fab-back-to-top {
+  position: fixed;
+  bottom: calc(1.5rem + var(--sab));
+  right: calc(1.5rem + var(--sar));
+  z-index: 40;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fab-back-to-top.fab-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1.2rem) scale(0.9);
+}
+
+#fab-back-to-top.fab-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
